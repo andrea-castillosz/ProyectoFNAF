@@ -616,19 +616,19 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_Cam1BMouseClicked
 
     private void btn_Cam1CMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_Cam1CMouseClicked
-        locationCamara = "dinning";
+        locationCamara = "pirateCove";
     }//GEN-LAST:event_btn_Cam1CMouseClicked
 
     private void btn_Cam2AMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_Cam2AMouseClicked
-        locationCamara = "restrooms";
+        locationCamara = "wHall";
     }//GEN-LAST:event_btn_Cam2AMouseClicked
 
     private void btn_Cam2BMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_Cam2BMouseClicked
-        locationCamara = "pirateCove";
+        locationCamara = "wHallCorner";
     }//GEN-LAST:event_btn_Cam2BMouseClicked
 
     private void btn_Cam3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_Cam3MouseClicked
-        locationCamara = "kitchen";
+        locationCamara = "supplyCloset";
     }//GEN-LAST:event_btn_Cam3MouseClicked
 
     private void btn_Cam4AMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_Cam4AMouseClicked
@@ -636,7 +636,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_Cam4AMouseClicked
 
     private void btn_Cam4BMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_Cam4BMouseClicked
-        locationCamara = "wHall";
+        locationCamara = "eHallCorner";
     }//GEN-LAST:event_btn_Cam4BMouseClicked
 
     private void btn_Cam5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_Cam5MouseClicked
@@ -644,11 +644,11 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_Cam5MouseClicked
 
     private void btn_Cam6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_Cam6MouseClicked
-        locationCamara = "backstage";
+        locationCamara = "kitchen"; //CAM DISABLE
     }//GEN-LAST:event_btn_Cam6MouseClicked
 
     private void btn_Cam7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_Cam7MouseClicked
-        locationCamara = "backstage";
+        locationCamara = "restrooms";
     }//GEN-LAST:event_btn_Cam7MouseClicked
 
     private void btn_luzizqMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_luzizqMouseClicked

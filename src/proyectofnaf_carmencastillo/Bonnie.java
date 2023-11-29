@@ -99,7 +99,7 @@ public class Bonnie {
     public void movimiento() {
         posib = ran.nextInt(20) + 1;
         
-        if (pos == 8 && puertaAbierta == true) {
+        if (pos == 8 && puertaAbierta == true) { //chica son 10
             jumpscare = true;
             pos++;
         } else if (pos == 8 && puertaAbierta == false) {
