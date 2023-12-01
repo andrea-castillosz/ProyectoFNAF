@@ -45,8 +45,9 @@ public class HiloCloseCam extends Thread{
                }
            }
            camaragif.setVisible(false);
-           ofi.setVisible(true);
            povcamaras.setVisible(false);
+           ofi.setVisible(true);
+           
     }
     
 }

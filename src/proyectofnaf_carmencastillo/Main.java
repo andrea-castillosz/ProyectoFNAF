@@ -20,7 +20,7 @@ import javax.swing.Timer;
  *
  * @author casti
  */
-public class Main extends javax.swing.JFrame {
+public class Main extends javax.swing.JFrame implements Runnable {
 
     private ArrayList<Usuario> usuarios;
     private int mouseX, mouseY;
@@ -28,7 +28,9 @@ public class Main extends javax.swing.JFrame {
     private int banderaPuertaDer = 0;
     private int banderaLuzDer = 0;
     private int banderaLuzIz = 0;
-    public String locationCamara;
+    private int banderaCamara = 1;
+    //1 camara cerrada / 0 camara abierta
+    public String locationCamara = "stage";
 
     /**
      * Creates new form Main
@@ -38,7 +40,6 @@ public class Main extends javax.swing.JFrame {
 
         this.setLocationRelativeTo(null);
         this.setResizable(true);
-        hHora = new HiloHora(lbHora, lbHoraCam);
     }
 
     /**
@@ -112,6 +113,18 @@ public class Main extends javax.swing.JFrame {
         btn_closecam = new javax.swing.JLabel();
         lbMapa = new javax.swing.JLabel();
         setearCamara = new javax.swing.JLabel();
+        jumpscareBonnie = new javax.swing.JPanel();
+        jsBon = new javax.swing.JLabel();
+        jumpscareChica = new javax.swing.JPanel();
+        jsChica = new javax.swing.JLabel();
+        jumpscareFreddysinLuz = new javax.swing.JPanel();
+        jsFred = new javax.swing.JLabel();
+        jumpscareFoxy = new javax.swing.JPanel();
+        jsFox = new javax.swing.JLabel();
+        jumpscareFredNormal = new javax.swing.JPanel();
+        jsFreddyN = new javax.swing.JLabel();
+        jumpscareGF = new javax.swing.JPanel();
+        jsGF = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         JCB_LogIn = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
@@ -322,6 +335,7 @@ public class Main extends javax.swing.JFrame {
         cam.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         monitor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/monitorAbfinal.gif"))); // NOI18N
+        monitor.setPreferredSize(new java.awt.Dimension(1463, 650));
         cam.add(monitor, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1470, 650));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ofi.jpg"))); // NOI18N
@@ -440,6 +454,92 @@ public class Main extends javax.swing.JFrame {
 
         vOficina.getContentPane().add(povcam, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, -4, 1470, 650));
 
+        jsBon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/jsBonnie.gif"))); // NOI18N
+
+        javax.swing.GroupLayout jumpscareBonnieLayout = new javax.swing.GroupLayout(jumpscareBonnie);
+        jumpscareBonnie.setLayout(jumpscareBonnieLayout);
+        jumpscareBonnieLayout.setHorizontalGroup(
+            jumpscareBonnieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jsBon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jumpscareBonnieLayout.setVerticalGroup(
+            jumpscareBonnieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jsBon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        vOficina.getContentPane().add(jumpscareBonnie, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jsChica.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/jsChica.gif"))); // NOI18N
+
+        javax.swing.GroupLayout jumpscareChicaLayout = new javax.swing.GroupLayout(jumpscareChica);
+        jumpscareChica.setLayout(jumpscareChicaLayout);
+        jumpscareChicaLayout.setHorizontalGroup(
+            jumpscareChicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jsChica, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jumpscareChicaLayout.setVerticalGroup(
+            jumpscareChicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jsChica, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        vOficina.getContentPane().add(jumpscareChica, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jsFred.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/jsFreddy.gif"))); // NOI18N
+
+        javax.swing.GroupLayout jumpscareFreddysinLuzLayout = new javax.swing.GroupLayout(jumpscareFreddysinLuz);
+        jumpscareFreddysinLuz.setLayout(jumpscareFreddysinLuzLayout);
+        jumpscareFreddysinLuzLayout.setHorizontalGroup(
+            jumpscareFreddysinLuzLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jsFred, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jumpscareFreddysinLuzLayout.setVerticalGroup(
+            jumpscareFreddysinLuzLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jsFred, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        vOficina.getContentPane().add(jumpscareFreddysinLuz, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jsFox.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/jsFoxy.gif"))); // NOI18N
+
+        javax.swing.GroupLayout jumpscareFoxyLayout = new javax.swing.GroupLayout(jumpscareFoxy);
+        jumpscareFoxy.setLayout(jumpscareFoxyLayout);
+        jumpscareFoxyLayout.setHorizontalGroup(
+            jumpscareFoxyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jsFox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jumpscareFoxyLayout.setVerticalGroup(
+            jumpscareFoxyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jsFox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        vOficina.getContentPane().add(jumpscareFoxy, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        javax.swing.GroupLayout jumpscareFredNormalLayout = new javax.swing.GroupLayout(jumpscareFredNormal);
+        jumpscareFredNormal.setLayout(jumpscareFredNormalLayout);
+        jumpscareFredNormalLayout.setHorizontalGroup(
+            jumpscareFredNormalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jsFreddyN, javax.swing.GroupLayout.DEFAULT_SIZE, 1463, Short.MAX_VALUE)
+        );
+        jumpscareFredNormalLayout.setVerticalGroup(
+            jumpscareFredNormalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jsFreddyN, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
+        );
+
+        vOficina.getContentPane().add(jumpscareFredNormal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        javax.swing.GroupLayout jumpscareGFLayout = new javax.swing.GroupLayout(jumpscareGF);
+        jumpscareGF.setLayout(jumpscareGFLayout);
+        jumpscareGFLayout.setHorizontalGroup(
+            jumpscareGFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jsGF, javax.swing.GroupLayout.DEFAULT_SIZE, 1463, Short.MAX_VALUE)
+        );
+        jumpscareGFLayout.setVerticalGroup(
+            jumpscareGFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jsGF, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
+        );
+
+        vOficina.getContentPane().add(jumpscareGF, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
@@ -551,12 +651,23 @@ public class Main extends javax.swing.JFrame {
         //puertizq1.setVisible(false);
         puertder.setVisible(false);
         povcam.setVisible(false);
+        jumpscareBonnie.setVisible(false);
+        jumpscareChica.setVisible(false);
+        jumpscareFreddysinLuz.setVisible(false);
+        jumpscareFoxy.setVisible(false);
+
+        HiloHora hHora = new HiloHora(lbHora, lbHoraCam);
+//        Noche1 no = new Noche1(setearCamara, locationCamara, this);
         hHora.start();
+        Thread noche = new Thread(this);
+        noche.start();
+//        no.start();
 
     }//GEN-LAST:event_JLbtnNuevaPartidaAdminMouseClicked
 
     private void btn_opencamMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_opencamMouseEntered
         //hiloMon.start();
+        banderaCamara = 1; //
         HiloCamAnimation hCam = new HiloCamAnimation(cam, oficina, povcam);
         hCam.start();
 
@@ -603,20 +714,24 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_puertaderMouseClicked
 
     private void btn_closecamMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_closecamMouseEntered
+        banderaCamara = 0;
         HiloCloseCam hCloseCam = new HiloCloseCam(camCerrar, oficina, povcam);
         hCloseCam.start();
     }//GEN-LAST:event_btn_closecamMouseEntered
 
     private void btn_Cam1AMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_Cam1AMouseClicked
         locationCamara = "stage";
+        System.out.println(locationCamara);
     }//GEN-LAST:event_btn_Cam1AMouseClicked
 
     private void btn_Cam1BMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_Cam1BMouseClicked
         locationCamara = "dinning";
+        //System.out.println(locationCamara);
     }//GEN-LAST:event_btn_Cam1BMouseClicked
 
     private void btn_Cam1CMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_Cam1CMouseClicked
         locationCamara = "pirateCove";
+        //System.out.println(locationCamara);
     }//GEN-LAST:event_btn_Cam1CMouseClicked
 
     private void btn_Cam2AMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_Cam2AMouseClicked
@@ -654,8 +769,8 @@ public class Main extends javax.swing.JFrame {
     private void btn_luzizqMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_luzizqMouseClicked
         if (banderaLuzIz == 0) { //ENCENDER
             ImageIcon btnluzder = new ImageIcon(getClass().getResource("/Imagenes/luzbtnIzq.jpg"));
-            ImageIcon btnluzPuertader = new ImageIcon(getClass().getResource("/Imagenes/puertaIzqLuz.jpg"));                   
-            ImageIcon btnluzVentanader = new ImageIcon(getClass().getResource("/Imagenes/ventanaIzqLuz.png"));                   
+            ImageIcon btnluzPuertader = new ImageIcon(getClass().getResource("/Imagenes/puertaIzqLuz.jpg"));
+            ImageIcon btnluzVentanader = new ImageIcon(getClass().getResource("/Imagenes/ventanaIzqLuz.png"));
             btn_luzizq.setIcon(btnluzder);
             puertaLuzizq.setIcon(btnluzPuertader);
             ventanaizq.setIcon(btnluzVentanader);
@@ -673,8 +788,8 @@ public class Main extends javax.swing.JFrame {
 
         if (banderaLuzDer == 0) { //ENCENDER
             ImageIcon btnluzder = new ImageIcon(getClass().getResource("/Imagenes/luzbtnDer.jpg"));
-            ImageIcon btnluzPuertader = new ImageIcon(getClass().getResource("/Imagenes/puertaDerLuzeEn.jpg"));                   
-            ImageIcon btnluzVentanader = new ImageIcon(getClass().getResource("/Imagenes/venDerLuz.png"));                   
+            ImageIcon btnluzPuertader = new ImageIcon(getClass().getResource("/Imagenes/puertaDerLuzeEn.jpg"));
+            ImageIcon btnluzVentanader = new ImageIcon(getClass().getResource("/Imagenes/venDerLuz.png"));
             btn_luzder.setIcon(btnluzder);
             puertaLuzder.setIcon(btnluzPuertader);
             ventanader.setIcon(btnluzVentanader);
@@ -755,18 +870,15 @@ public class Main extends javax.swing.JFrame {
     public void setSetearCamara(Icon ic) {
         this.setearCamara.setIcon(ic);
     }
-    
+
     public String getNombreCam() {
         return locationCamara;
     }
-    
+
     public void setNombreCam(String locCamara) {
         this.locationCamara = locCamara;
     }
 
-    
-    
-    private HiloHora hHora;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> JCB_LogIn;
@@ -817,6 +929,18 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel jsBon;
+    private javax.swing.JLabel jsChica;
+    private javax.swing.JLabel jsFox;
+    private javax.swing.JLabel jsFred;
+    private javax.swing.JLabel jsFreddyN;
+    private javax.swing.JLabel jsGF;
+    private javax.swing.JPanel jumpscareBonnie;
+    private javax.swing.JPanel jumpscareChica;
+    private javax.swing.JPanel jumpscareFoxy;
+    private javax.swing.JPanel jumpscareFredNormal;
+    private javax.swing.JPanel jumpscareFreddysinLuz;
+    private javax.swing.JPanel jumpscareGF;
     private javax.swing.JLabel lbHora;
     private javax.swing.JLabel lbHoraCam;
     private javax.swing.JLabel lbMapa;
@@ -838,4 +962,226 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel ventanader;
     private javax.swing.JLabel ventanaizq;
     // End of variables declaration//GEN-END:variables
+
+    private int contador = 0;
+    private int contador2 = 0;
+    private boolean isAlive = true;
+    private Bonnie bon = new Bonnie(3);
+    private Chica chic = new Chica(7);
+
+    @Override
+    public void run() {
+
+        while (isAlive) {
+            contador2++;
+
+            try {
+                Thread.sleep(1);
+            } catch (Exception e) {
+            }
+            System.out.println("");
+            System.out.println(contador2);
+            System.out.println(contador);
+            System.out.println();
+            if (contador2 == 4000) {
+                bon.movimiento();
+                chic.movimiento();
+                contador2 = 0;
+            }
+
+            System.out.println("Bonnie pos: " + bon.getUbic());
+            System.out.println();
+            System.out.println("Chica pos: " + chic.getUbic());
+
+            if (locationCamara.equals("stage")) { // 1A
+                if (bon.getUbic() == 0 && chic.getUbic() == 0) { //estan los tres
+                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/showstage_todos.jpg"));
+                    setearCamara.setIcon(showstage_todos);
+                }
+                if (bon.getUbic() != 0 && chic.getUbic() == 0) { //estan sin bonnie
+                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/SHSsinBonnie.jpg"));
+                    setearCamara.setIcon(showstage_todos);
+                }
+                if (bon.getUbic() == 0 && chic.getUbic() != 0) { //estan sin chica
+                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/SHSsinChica.jpg"));
+                    setearCamara.setIcon(showstage_todos);
+                }
+                if (bon.getUbic() != 0 && chic.getUbic() != 0) { //solo freddy
+                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/SHSSOLOFreddy.jpg"));
+                    setearCamara.setIcon(showstage_todos);
+                }
+
+            }
+
+            if (locationCamara.equals("dinning")) { //1, 2 BONNIE Y CHICA //FREDDY SOLO 1 // bon 1 2 / chic 1 2 / fred 1 //1B
+
+                if (bon.getUbic() != 1 && chic.getUbic() != 1 && chic.getUbic() != 2 && bon.getUbic() != 2) { //vacio
+                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/DinnerVacio.jpg"));
+                    setearCamara.setIcon(showstage_todos);
+                }
+                if (bon.getUbic() == 1 && chic.getUbic() != 1 && chic.getUbic() != 2 && bon.getUbic() != 2) { //bonnie 1
+                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/DinnerBonnie1.jpg"));
+                    setearCamara.setIcon(showstage_todos);
+                }
+                if (bon.getUbic() != 1 && chic.getUbic() != 1 && chic.getUbic() != 2 && bon.getUbic() == 2) { //bonnie 2
+                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/DinningBonnie2.jpg"));
+                    setearCamara.setIcon(showstage_todos);
+                }
+                if (bon.getUbic() != 1 && chic.getUbic() == 1 && chic.getUbic() != 2 && bon.getUbic() != 2) { //chica 1
+                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/DinnerChica1.jpg"));
+                    setearCamara.setIcon(showstage_todos);
+                }
+                if (bon.getUbic() != 1 && chic.getUbic() != 1 && chic.getUbic() == 2 && bon.getUbic() != 2) { //chica 2
+                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/DinnerChica2.jpg"));
+                    setearCamara.setIcon(showstage_todos);
+                }
+                if ((bon.getUbic() == 1 && chic.getUbic() == 1) || (chic.getUbic() == 2 && bon.getUbic() == 2)) { //si estan bonnie y chica
+                    bon.setUbic(3);
+                }
+                if ((bon.getUbic() == 1 && chic.getUbic() == 2) || (chic.getUbic() == 1 && bon.getUbic() == 2)) { //si estan bonnie y 
+                    bon.setUbic(3);
+                }
+
+            }
+
+            if (locationCamara.equals("pirateCove")) { //FOXY 0 1 2 y si se fue // 1C
+                ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/PirateC_0.jpg"));
+                setearCamara.setIcon(showstage_todos);
+            }
+
+            if (locationCamara.equals("wHall")) { // gif fox 3 / bon 5 //2A
+
+                if (bon.getUbic() != 5) { //VACIO
+                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/wHallVacio.jpg"));
+                    setearCamara.setIcon(showstage_todos);
+                }
+                if (bon.getUbic() == 5) { //BONNIE /tiene 7 posiciones creo
+                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/wHallBonnie.jpg"));
+                    setearCamara.setIcon(showstage_todos);
+                }
+
+            }
+
+            if (locationCamara.equals("wHallCorner")) { //bon 7 // gf no se //2B
+
+                if (bon.getUbic() != 7) { //VACIO
+                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/wHallCVacio.jpg"));
+                    setearCamara.setIcon(showstage_todos);
+                }
+                if (bon.getUbic() == 7) { //bonnie
+                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/wHallCBon.jpg"));
+                    setearCamara.setIcon(showstage_todos);
+                }
+
+            }
+
+            if (locationCamara.equals("supplyCloset")) { // bon 6         //3
+
+                if (bon.getUbic() != 6) { //VACIO
+                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/ClosetVacio.jpg"));
+                    setearCamara.setIcon(showstage_todos);
+                }
+                if (bon.getUbic() == 6) { //bonnie
+                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/ClosetBon.jpg"));
+                    setearCamara.setIcon(showstage_todos);
+                }
+
+            }
+
+            if (locationCamara.equals("eHall")) { //chic 6 7 / fred 3 //4A
+
+                if (chic.getUbic() != 6 && chic.getUbic() != 7) { //VACIO
+                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/eHallVacio.jpg"));
+                    setearCamara.setIcon(showstage_todos);
+                }
+                if (chic.getUbic() == 6 && chic.getUbic() != 7) { //CHICA
+                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/eHallChica6.jpg"));
+                    setearCamara.setIcon(showstage_todos);
+                }
+                if (chic.getUbic() != 6 && chic.getUbic() == 7) { //CHICA CERCA
+                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/eHallChica7.jpg"));
+                    setearCamara.setIcon(showstage_todos);
+                }
+            }
+
+            if (locationCamara.equals("eHallCorner")) { //chic 8 / fred 4 //4B
+
+                if (chic.getUbic() != 8) { //vacio
+                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/eHallCornerVacio.jpg"));
+                    setearCamara.setIcon(showstage_todos);
+                }
+                if (chic.getUbic() == 8) { //chica
+                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/eHallCornerChica.jpg"));
+                    setearCamara.setIcon(showstage_todos);
+                }
+
+            }
+
+            if (locationCamara.equals("backstage")) { //bon 3 4            //5
+
+                if (bon.getUbic() != 3 && bon.getUbic() != 4) { //vacio
+                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/backstVacio.jpg"));
+                    setearCamara.setIcon(showstage_todos);
+                }
+                if (bon.getUbic() == 3 && bon.getUbic() != 4) { //bonnie
+                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/backstBonnie1.jpg"));
+                    setearCamara.setIcon(showstage_todos);
+                }
+                if (bon.getUbic() != 3 && bon.getUbic() == 4) { //bonnie
+                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/backstBonnie2.jpg"));
+                    setearCamara.setIcon(showstage_todos);
+                }
+
+            }
+
+            if (locationCamara.equals("kitchen")) { //chic 5            //6
+                //camara desabilitada
+                ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/static.gif"));
+                setearCamara.setIcon(showstage_todos);
+
+            }
+
+            if (locationCamara.equals("restrooms")) { //chic 3 4 / fred 2     //7
+
+                if (chic.getUbic() != 3 && chic.getUbic() != 4) { //VACIO
+                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/restroomVacio.jpg"));
+                    setearCamara.setIcon(showstage_todos);
+                }
+                if (chic.getUbic() == 3 && chic.getUbic() != 4) { //CHICA
+                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/restroomChica1.jpg"));
+                    setearCamara.setIcon(showstage_todos);
+                }
+                if (chic.getUbic() != 3 && chic.getUbic() == 4) { //CHICA CERCA
+                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/restroomChica2.jpg"));
+                    setearCamara.setIcon(showstage_todos);
+                }
+
+            }
+
+            if (banderaLuzDer == 1 && chic.getUbic() == 9) {
+                ImageIcon btnluzVentanader = new ImageIcon(getClass().getResource("/Imagenes/venDerLuzChica2.png"));
+                ventanader.setIcon(btnluzVentanader);
+            }
+
+            if (banderaLuzIz == 1 && bon.getUbic() == 8) {
+                ImageIcon btnluzPuertader = new ImageIcon(getClass().getResource("/Imagenes/bonofiLuzEn.jpg"));
+                puertaLuzizq.setIcon(btnluzPuertader);
+            }
+
+            if (bon.getUbic() == 8 && banderaPuertaIz == 0 && banderaCamara == 0) {
+                
+            }
+            if (bon.getUbic() == 8 && banderaPuertaIz == 1 && banderaCamara == 1) {
+                bon.setUbic(1);
+            }
+
+            contador++;
+            if (contador == 180000) {
+                isAlive = false;
+                System.out.println("Fin hilo");
+                return;
+            }
+
+        }
+    }
 }
