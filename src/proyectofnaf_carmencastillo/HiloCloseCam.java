@@ -12,8 +12,8 @@ import javax.swing.JPanel;
  *
  * @author casti
  */
-public class HiloCloseCam extends Thread{
-    
+public class HiloCloseCam extends Thread {
+
     private final JPanel camaragif;
     private JPanel ofi;
     private JPanel povcamaras;
@@ -29,25 +29,26 @@ public class HiloCloseCam extends Thread{
         this.ofi = ofi;
         this.povcamaras = povcamaras;
     }
-    
+
     @Override
-    public void run(){
-           camaragif.setVisible(true);
-           while (isAlive){
-               contador++;
-               if (contador == 100) {
-                   isAlive = false;
-               }
-               try {
-                   Thread.sleep(2);
-               } catch (InterruptedException ex) {
-                   Logger.getLogger(HiloCamAnimation.class.getName()).log(Level.SEVERE, null, ex);
-               }
-           }
-           camaragif.setVisible(false);
-           povcamaras.setVisible(false);
-           ofi.setVisible(true);
-           
+    public void run() {
+        povcamaras.setVisible(false);
+        camaragif.setVisible(true);
+        while (isAlive) {
+            contador++;
+            if (contador == 100) {
+                isAlive = false;
+            }
+            try {
+                Thread.sleep(2);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(HiloCloseCam.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        camaragif.setVisible(false);
+        povcamaras.setVisible(false);
+        ofi.setVisible(true);
+
     }
-    
+
 }

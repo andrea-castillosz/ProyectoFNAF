@@ -28,7 +28,7 @@ public class Main extends javax.swing.JFrame implements Runnable {
     private int banderaPuertaDer = 0;
     private int banderaLuzDer = 0;
     private int banderaLuzIz = 0;
-    private int banderaCamara = 1;
+    private int banderaCamara = 0;
     //1 camara cerrada / 0 camara abierta
     public String locationCamara = "stage";
 
@@ -125,6 +125,14 @@ public class Main extends javax.swing.JFrame implements Runnable {
         jsFreddyN = new javax.swing.JLabel();
         jumpscareGF = new javax.swing.JPanel();
         jsGF = new javax.swing.JLabel();
+        BadEnding = new javax.swing.JPanel();
+        bade = new javax.swing.JLabel();
+        GoodEnding = new javax.swing.JPanel();
+        goode = new javax.swing.JLabel();
+        PantallaNegra = new javax.swing.JPanel();
+        pantallan = new javax.swing.JLabel();
+        GameOver = new javax.swing.JPanel();
+        GO = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         JCB_LogIn = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
@@ -540,6 +548,64 @@ public class Main extends javax.swing.JFrame implements Runnable {
 
         vOficina.getContentPane().add(jumpscareGF, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        bade.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/badDSPCN.jpg"))); // NOI18N
+
+        javax.swing.GroupLayout BadEndingLayout = new javax.swing.GroupLayout(BadEnding);
+        BadEnding.setLayout(BadEndingLayout);
+        BadEndingLayout.setHorizontalGroup(
+            BadEndingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(bade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        BadEndingLayout.setVerticalGroup(
+            BadEndingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(bade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        vOficina.getContentPane().add(BadEnding, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        goode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/goodDSP5.jpg"))); // NOI18N
+
+        javax.swing.GroupLayout GoodEndingLayout = new javax.swing.GroupLayout(GoodEnding);
+        GoodEnding.setLayout(GoodEndingLayout);
+        GoodEndingLayout.setHorizontalGroup(
+            GoodEndingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(goode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        GoodEndingLayout.setVerticalGroup(
+            GoodEndingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(goode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        vOficina.getContentPane().add(GoodEnding, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        javax.swing.GroupLayout PantallaNegraLayout = new javax.swing.GroupLayout(PantallaNegra);
+        PantallaNegra.setLayout(PantallaNegraLayout);
+        PantallaNegraLayout.setHorizontalGroup(
+            PantallaNegraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pantallan, javax.swing.GroupLayout.DEFAULT_SIZE, 1463, Short.MAX_VALUE)
+        );
+        PantallaNegraLayout.setVerticalGroup(
+            PantallaNegraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pantallan, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
+        );
+
+        vOficina.getContentPane().add(PantallaNegra, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        GO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/gameOver.jpg"))); // NOI18N
+
+        javax.swing.GroupLayout GameOverLayout = new javax.swing.GroupLayout(GameOver);
+        GameOver.setLayout(GameOverLayout);
+        GameOverLayout.setHorizontalGroup(
+            GameOverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(GO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        GameOverLayout.setVerticalGroup(
+            GameOverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(GO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        vOficina.getContentPane().add(GameOver, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
@@ -655,6 +721,7 @@ public class Main extends javax.swing.JFrame implements Runnable {
         jumpscareChica.setVisible(false);
         jumpscareFreddysinLuz.setVisible(false);
         jumpscareFoxy.setVisible(false);
+        jumpscareGF.setVisible(false);
 
         HiloHora hHora = new HiloHora(lbHora, lbHoraCam);
 //        Noche1 no = new Noche1(setearCamara, locationCamara, this);
@@ -881,6 +948,10 @@ public class Main extends javax.swing.JFrame implements Runnable {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel BadEnding;
+    private javax.swing.JLabel GO;
+    private javax.swing.JPanel GameOver;
+    private javax.swing.JPanel GoodEnding;
     private javax.swing.JComboBox<String> JCB_LogIn;
     private javax.swing.JLabel JLbtnContinuarNoche;
     private javax.swing.JLabel JLbtnCrearUser;
@@ -889,6 +960,8 @@ public class Main extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel JLbtnNuevaPartida;
     private javax.swing.JLabel JLbtnNuevaPartidaAdmin;
     private javax.swing.JTextField Jtxtf_UsuarioAdd;
+    private javax.swing.JPanel PantallaNegra;
+    private javax.swing.JLabel bade;
     private javax.swing.JLabel btnContinuarNocheAdmin;
     private javax.swing.JLabel btn_Cam1A;
     private javax.swing.JLabel btn_Cam1B;
@@ -911,6 +984,7 @@ public class Main extends javax.swing.JFrame implements Runnable {
     private javax.swing.JPanel camCerrar;
     private javax.swing.JLabel fondo;
     private javax.swing.JLabel fondo1;
+    private javax.swing.JLabel goode;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -947,6 +1021,7 @@ public class Main extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel monitor;
     private javax.swing.JLabel monitor1;
     private javax.swing.JPanel oficina;
+    private javax.swing.JLabel pantallan;
     private javax.swing.JPanel povcam;
     private javax.swing.JLabel puertaLuzder;
     private javax.swing.JLabel puertaLuzizq;
@@ -1169,9 +1244,22 @@ public class Main extends javax.swing.JFrame implements Runnable {
             }
 
             if (bon.getUbic() == 8 && banderaPuertaIz == 0 && banderaCamara == 0) {
-                
+                HiloJumpscareB hJSBon = new HiloJumpscareB(jumpscareBonnie, this, vOficina, oficina);
+                hJSBon.start();
+                return;
             }
-            if (bon.getUbic() == 8 && banderaPuertaIz == 1 && banderaCamara == 1) {
+            
+            if (chic.getUbic() == 9 && banderaPuertaDer == 0 && banderaCamara == 0) {
+                HiloJSChica hJSChic = new HiloJSChica(jumpscareBonnie, this, vOficina, oficina);
+                hJSChic.start();
+                return;
+            }
+            
+            if (chic.getUbic() == 9 && banderaPuertaDer == 1) {
+                chic.setUbic(1);
+            }
+            
+            if (bon.getUbic() == 8 && banderaPuertaIz == 1) {
                 bon.setUbic(1);
             }
 
