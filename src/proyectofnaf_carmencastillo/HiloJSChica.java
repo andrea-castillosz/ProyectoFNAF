@@ -49,7 +49,9 @@ public class HiloJSChica extends Thread{
                 Logger.getLogger(HiloJSChica.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        
         jsChic.setVisible(false);
+        ofi.setVisible(true);
         oficina.setVisible(false);
         inicio.setVisible(true);
         

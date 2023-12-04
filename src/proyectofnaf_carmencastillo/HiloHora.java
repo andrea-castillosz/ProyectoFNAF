@@ -14,7 +14,7 @@ import javax.swing.JLabel;
  */
 public class HiloHora extends Thread {
 
-    private boolean isAlive = true;
+    private boolean isAlive;
     private int num = 0;
     private JLabel hora;
     private JLabel horacam;
@@ -26,6 +26,7 @@ public class HiloHora extends Thread {
     public HiloHora(JLabel hora, JLabel horacam) {
         this.hora = hora;
         this.horacam = horacam;
+        isAlive = true;
     }
 
     public boolean isIsAlive() {
@@ -95,15 +96,17 @@ public class HiloHora extends Thread {
                 hora.setText("4 AM");
                 horacam.setText("4 AM");
             }
-            if(num == 5)
-            {
+            if(num == 5){
                 hora.setText("5 AM");
                 horacam.setText("5 AM");
+                isAlive = false;
+                hora.setText("6 AM");
+                horacam.setText("6 AM");
             }
             else if (num == 6) {
                 hora.setText("6 AM");
                 horacam.setText("6 AM");
-                isAlive = false;
+                //isAlive = false;
             }
             
             num++;

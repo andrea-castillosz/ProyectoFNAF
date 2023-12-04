@@ -29,6 +29,7 @@ public class Main extends javax.swing.JFrame implements Runnable {
     private int banderaLuzDer = 0;
     private int banderaLuzIz = 0;
     private int banderaCamara = 0;
+    private Thread Ref;
     //1 camara cerrada / 0 camara abierta
     public String locationCamara = "stage";
 
@@ -37,7 +38,6 @@ public class Main extends javax.swing.JFrame implements Runnable {
      */
     public Main() {
         initComponents();
-
         this.setLocationRelativeTo(null);
         this.setResizable(true);
     }
@@ -711,6 +711,13 @@ public class Main extends javax.swing.JFrame implements Runnable {
         vOficina.pack();
         vOficina.setLocationRelativeTo(null);
         vOficina.setVisible(true);
+        oficina.setVisible(true);
+        
+        ImageIcon off = new ImageIcon(getClass().getResource("/Imagenes/ofi.jpg"));
+        jLabel15.setIcon(off);
+        chic.setUbic(0);
+        bon.setUbic(0);
+        
         cam.setVisible(false);
         camCerrar.setVisible(false);
         puertizq.setVisible(false);
@@ -724,7 +731,7 @@ public class Main extends javax.swing.JFrame implements Runnable {
         jumpscareGF.setVisible(false);
 
         HiloHora hHora = new HiloHora(lbHora, lbHoraCam);
-//        Noche1 no = new Noche1(setearCamara, locationCamara, this);
+        Ref = hHora;
         hHora.start();
         Thread noche = new Thread(this);
         noche.start();
@@ -1041,8 +1048,8 @@ public class Main extends javax.swing.JFrame implements Runnable {
     private int contador = 0;
     private int contador2 = 0;
     private boolean isAlive = true;
-    private Bonnie bon = new Bonnie(3);
-    private Chica chic = new Chica(7);
+    private Bonnie bon = new Bonnie(15);
+    private Chica chic = new Chica(3);
 
     @Override
     public void run() {
@@ -1250,8 +1257,10 @@ public class Main extends javax.swing.JFrame implements Runnable {
             }
             
             if (chic.getUbic() == 9 && banderaPuertaDer == 0 && banderaCamara == 0) {
-                HiloJSChica hJSChic = new HiloJSChica(jumpscareBonnie, this, vOficina, oficina);
+                HiloJSChica hJSChic = new HiloJSChica(jumpscareChica, this, vOficina, oficina);
                 hJSChic.start();
+                
+                
                 return;
             }
             
@@ -1264,8 +1273,9 @@ public class Main extends javax.swing.JFrame implements Runnable {
             }
 
             contador++;
-            if (contador == 180000) {
+            if (!Ref.isAlive()) {
                 isAlive = false;
+                //Ref.stop();
                 System.out.println("Fin hilo");
                 return;
             }

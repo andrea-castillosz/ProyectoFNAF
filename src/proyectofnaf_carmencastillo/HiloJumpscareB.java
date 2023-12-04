@@ -39,12 +39,12 @@ public class HiloJumpscareB extends Thread {
         jsBon.setVisible(true);
         while (isAlive) {
             contador++;
-            if (contador == 400) {
+            if (contador == 860) {
                 
                 isAlive = false;
             }
             try {
-                Thread.sleep(2);
+                Thread.sleep(1);
             } catch (InterruptedException ex) {
                 Logger.getLogger(HiloJumpscareB.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -52,6 +52,7 @@ public class HiloJumpscareB extends Thread {
         jsBon.setVisible(false);
         oficina.setVisible(false);
         inicio.setVisible(true);
+        ofi.setVisible(true);
         
     }
     
