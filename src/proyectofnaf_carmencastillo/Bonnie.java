@@ -48,9 +48,10 @@ public class Bonnie {
 
     public void movimiento() {
         posib = ran.nextInt(20) + 1;
-        pos = ran.nextInt(7) + 1;
+        pos = ran.nextInt(8) + 1;
         
-        if (ubic == 7) {
+        
+        if (ubic == 8) {
             ubic++;
         }
         

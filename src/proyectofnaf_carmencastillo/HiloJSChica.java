@@ -39,7 +39,7 @@ public class HiloJSChica extends Thread{
         jsChic.setVisible(true);
         while (isAlive) {
             contador++;
-            if (contador == 400) {
+            if (contador == 500) {
                 
                 isAlive = false;
             }

@@ -39,7 +39,7 @@ public class HiloJumpscareB extends Thread {
         jsBon.setVisible(true);
         while (isAlive) {
             contador++;
-            if (contador == 860) {
+            if (contador == 500) {
                 
                 isAlive = false;
             }

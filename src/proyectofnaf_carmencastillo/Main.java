@@ -66,6 +66,8 @@ public class Main extends javax.swing.JFrame implements Runnable {
         Jtxtf_UsuarioAdd = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         userLabel4 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
         vMenuJuegoAdmin = new javax.swing.JDialog();
         jPanel4 = new javax.swing.JPanel();
         JLbtnNochePers1 = new javax.swing.JLabel();
@@ -133,6 +135,8 @@ public class Main extends javax.swing.JFrame implements Runnable {
         pantallan = new javax.swing.JLabel();
         GameOver = new javax.swing.JPanel();
         GO = new javax.swing.JLabel();
+        Win5a6 = new javax.swing.JPanel();
+        cinaseis = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         JCB_LogIn = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
@@ -193,10 +197,10 @@ public class Main extends javax.swing.JFrame implements Runnable {
         userLabel3.setFont(new java.awt.Font("Roboto Light", 1, 24)); // NOI18N
         userLabel3.setForeground(new java.awt.Color(255, 255, 255));
         userLabel3.setText("Crear");
-        jPanel3.add(userLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, -1, -1));
+        jPanel3.add(userLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 400, -1, -1));
 
         Jtxtf_UsuarioAdd.setBackground(new java.awt.Color(0, 0, 0));
-        Jtxtf_UsuarioAdd.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        Jtxtf_UsuarioAdd.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         Jtxtf_UsuarioAdd.setForeground(new java.awt.Color(255, 255, 255));
         Jtxtf_UsuarioAdd.setBorder(null);
         Jtxtf_UsuarioAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -204,25 +208,43 @@ public class Main extends javax.swing.JFrame implements Runnable {
                 Jtxtf_UsuarioAddActionPerformed(evt);
             }
         });
-        jPanel3.add(Jtxtf_UsuarioAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 500, -1));
+        jPanel3.add(Jtxtf_UsuarioAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, 650, 50));
 
         jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 510, 20));
+        jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, 650, 20));
 
         userLabel4.setFont(new java.awt.Font("Roboto Light", 1, 36)); // NOI18N
         userLabel4.setForeground(new java.awt.Color(255, 255, 255));
         userLabel4.setText("CREAR USUARIO");
-        jPanel3.add(userLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, -1, -1));
+        jPanel3.add(userLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, -1, -1));
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/helpmi.gif"))); // NOI18N
+        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 70, 510, 500));
+
+        jPanel5.setBackground(new java.awt.Color(0, 0, 0));
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1460, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 650, Short.MAX_VALUE)
+        );
+
+        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1460, 650));
 
         javax.swing.GroupLayout vCrearUsuarioLayout = new javax.swing.GroupLayout(vCrearUsuario.getContentPane());
         vCrearUsuario.getContentPane().setLayout(vCrearUsuarioLayout);
         vCrearUsuarioLayout.setHorizontalGroup(
             vCrearUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 969, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         vCrearUsuarioLayout.setVerticalGroup(
             vCrearUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 496, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jPanel4.setBackground(new java.awt.Color(0, 0, 0));
@@ -282,9 +304,11 @@ public class Main extends javax.swing.JFrame implements Runnable {
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        vOficina.setMinimumSize(new java.awt.Dimension(1463, 650));
         vOficina.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         oficina.setBackground(new java.awt.Color(0, 0, 0));
+        oficina.setMinimumSize(new java.awt.Dimension(1463, 650));
         oficina.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbHora.setBackground(new java.awt.Color(255, 255, 255));
@@ -336,7 +360,7 @@ public class Main extends javax.swing.JFrame implements Runnable {
         oficina.add(puertaLuzder, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 0, 200, 650));
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ofi.jpg"))); // NOI18N
-        oficina.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 650));
+        oficina.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1460, 650));
 
         vOficina.getContentPane().add(oficina, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -344,7 +368,7 @@ public class Main extends javax.swing.JFrame implements Runnable {
 
         monitor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/monitorAbfinal.gif"))); // NOI18N
         monitor.setPreferredSize(new java.awt.Dimension(1463, 650));
-        cam.add(monitor, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1470, 650));
+        cam.add(monitor, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1460, 650));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ofi.jpg"))); // NOI18N
         cam.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -606,6 +630,21 @@ public class Main extends javax.swing.JFrame implements Runnable {
 
         vOficina.getContentPane().add(GameOver, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        cinaseis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/goodDSP5.jpg"))); // NOI18N
+
+        javax.swing.GroupLayout Win5a6Layout = new javax.swing.GroupLayout(Win5a6);
+        Win5a6.setLayout(Win5a6Layout);
+        Win5a6Layout.setHorizontalGroup(
+            Win5a6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(cinaseis, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        Win5a6Layout.setVerticalGroup(
+            Win5a6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(cinaseis, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        vOficina.getContentPane().add(Win5a6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
@@ -641,7 +680,7 @@ public class Main extends javax.swing.JFrame implements Runnable {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(70, Short.MAX_VALUE)
+                .addContainerGap(571, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(JLbtnCrearUser1)
                     .addComponent(JLbtnCrearUser, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -656,7 +695,7 @@ public class Main extends javax.swing.JFrame implements Runnable {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(160, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(JLbtnCrearUser1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -968,6 +1007,7 @@ public class Main extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel JLbtnNuevaPartidaAdmin;
     private javax.swing.JTextField Jtxtf_UsuarioAdd;
     private javax.swing.JPanel PantallaNegra;
+    private javax.swing.JPanel Win5a6;
     private javax.swing.JLabel bade;
     private javax.swing.JLabel btnContinuarNocheAdmin;
     private javax.swing.JLabel btn_Cam1A;
@@ -989,6 +1029,7 @@ public class Main extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel btn_puertaizq;
     private javax.swing.JPanel cam;
     private javax.swing.JPanel camCerrar;
+    private javax.swing.JLabel cinaseis;
     private javax.swing.JLabel fondo;
     private javax.swing.JLabel fondo1;
     private javax.swing.JLabel goode;
@@ -997,6 +1038,7 @@ public class Main extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -1009,6 +1051,7 @@ public class Main extends javax.swing.JFrame implements Runnable {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel jsBon;
     private javax.swing.JLabel jsChica;
@@ -1250,17 +1293,15 @@ public class Main extends javax.swing.JFrame implements Runnable {
                 puertaLuzizq.setIcon(btnluzPuertader);
             }
 
-            if (bon.getUbic() == 8 && banderaPuertaIz == 0 && banderaCamara == 0) {
+            if (bon.getUbic() == 9 && banderaPuertaIz == 0 && banderaCamara == 0) {
                 HiloJumpscareB hJSBon = new HiloJumpscareB(jumpscareBonnie, this, vOficina, oficina);
                 hJSBon.start();
                 return;
             }
             
-            if (chic.getUbic() == 9 && banderaPuertaDer == 0 && banderaCamara == 0) {
+            if (chic.getUbic() == 10 && banderaPuertaDer == 0 && banderaCamara == 0) {
                 HiloJSChica hJSChic = new HiloJSChica(jumpscareChica, this, vOficina, oficina);
                 hJSChic.start();
-                
-                
                 return;
             }
             
@@ -1271,10 +1312,24 @@ public class Main extends javax.swing.JFrame implements Runnable {
             if (bon.getUbic() == 8 && banderaPuertaIz == 1) {
                 bon.setUbic(1);
             }
+            
+            
+            
+            
+            
+            
+            //NOCHE 2
+            
+            
+            
+            
+            
+            
 
             contador++;
             if (!Ref.isAlive()) {
                 isAlive = false;
+                
                 //Ref.stop();
                 System.out.println("Fin hilo");
                 return;

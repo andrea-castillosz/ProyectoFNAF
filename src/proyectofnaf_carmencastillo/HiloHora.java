@@ -100,8 +100,6 @@ public class HiloHora extends Thread {
                 hora.setText("5 AM");
                 horacam.setText("5 AM");
                 isAlive = false;
-                hora.setText("6 AM");
-                horacam.setText("6 AM");
             }
             else if (num == 6) {
                 hora.setText("6 AM");
