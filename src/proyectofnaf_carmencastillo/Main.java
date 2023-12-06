@@ -29,8 +29,14 @@ public class Main extends javax.swing.JFrame implements Runnable {
     private int banderaLuzDer = 0;
     private int banderaLuzIz = 0;
     private int banderaCamara = 0;
+    private int contVecesCam = 0; //CONTAR CUANTAS VECES ENTRA O SALE
+    private int contVecesCamClose = 0; //CONTAR CUANTAS VECES ENTRA O SALE
     private Thread Ref;
     //1 camara cerrada / 0 camara abierta
+    //banderaluz 1 encendida / 0 apagada
+    //banderaluzDer 1 encendida / 0 apagada
+    //banderaPuerta 1 cerrada / 0 abierta
+    //banderaPuertaDer 1 cerrada / 0 abierta
     public String locationCamara = "stage";
 
     /**
@@ -80,6 +86,10 @@ public class Main extends javax.swing.JFrame implements Runnable {
         jLabel13 = new javax.swing.JLabel();
         vOficina = new javax.swing.JFrame();
         oficina = new javax.swing.JPanel();
+        BateriaRestante = new javax.swing.JLabel();
+        UsoBateria = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         lbHora = new javax.swing.JLabel();
         btn_luzder = new javax.swing.JLabel();
         ventanader = new javax.swing.JLabel();
@@ -100,6 +110,10 @@ public class Main extends javax.swing.JFrame implements Runnable {
         monitor1 = new javax.swing.JLabel();
         fondo1 = new javax.swing.JLabel();
         povcam = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
+        BateriaRestanteCam = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        UsoBateriaCam = new javax.swing.JLabel();
         lbHoraCam = new javax.swing.JLabel();
         btn_Cam1A = new javax.swing.JLabel();
         btn_Cam1B = new javax.swing.JLabel();
@@ -311,6 +325,26 @@ public class Main extends javax.swing.JFrame implements Runnable {
         oficina.setMinimumSize(new java.awt.Dimension(1463, 650));
         oficina.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        BateriaRestante.setBackground(new java.awt.Color(255, 255, 255));
+        BateriaRestante.setFont(new java.awt.Font("Five Fonts at Freddy's", 0, 18)); // NOI18N
+        BateriaRestante.setForeground(new java.awt.Color(255, 255, 255));
+        oficina.add(BateriaRestante, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 540, 130, 40));
+
+        UsoBateria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/0bat.jpeg"))); // NOI18N
+        oficina.add(UsoBateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 580, 110, 40));
+
+        jLabel16.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel16.setFont(new java.awt.Font("Five Fonts at Freddy's", 0, 18)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setText("Power Left:");
+        oficina.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, 130, 40));
+
+        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel8.setFont(new java.awt.Font("Five Fonts at Freddy's", 0, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Usage:");
+        oficina.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 590, 80, 40));
+
         lbHora.setBackground(new java.awt.Color(255, 255, 255));
         lbHora.setFont(new java.awt.Font("Five Fonts at Freddy's", 0, 24)); // NOI18N
         lbHora.setForeground(new java.awt.Color(255, 255, 255));
@@ -386,6 +420,26 @@ public class Main extends javax.swing.JFrame implements Runnable {
         vOficina.getContentPane().add(camCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, -4, 1460, 650));
 
         povcam.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel17.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel17.setFont(new java.awt.Font("Five Fonts at Freddy's", 0, 18)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setText("Power Left:");
+        povcam.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, 130, 40));
+
+        BateriaRestanteCam.setBackground(new java.awt.Color(255, 255, 255));
+        BateriaRestanteCam.setFont(new java.awt.Font("Five Fonts at Freddy's", 0, 18)); // NOI18N
+        BateriaRestanteCam.setForeground(new java.awt.Color(255, 255, 255));
+        povcam.add(BateriaRestanteCam, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 540, 130, 40));
+
+        jLabel18.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel18.setFont(new java.awt.Font("Five Fonts at Freddy's", 0, 18)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel18.setText("Usage:");
+        povcam.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 590, 80, 40));
+
+        UsoBateriaCam.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/0bat.jpeg"))); // NOI18N
+        povcam.add(UsoBateriaCam, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 580, 110, 40));
 
         lbHoraCam.setBackground(new java.awt.Color(255, 255, 255));
         lbHoraCam.setFont(new java.awt.Font("Five Fonts at Freddy's", 0, 24)); // NOI18N
@@ -630,7 +684,7 @@ public class Main extends javax.swing.JFrame implements Runnable {
 
         vOficina.getContentPane().add(GameOver, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        cinaseis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/goodDSP5.jpg"))); // NOI18N
+        cinaseis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/5a6.gif"))); // NOI18N
 
         javax.swing.GroupLayout Win5a6Layout = new javax.swing.GroupLayout(Win5a6);
         Win5a6.setLayout(Win5a6Layout);
@@ -751,12 +805,12 @@ public class Main extends javax.swing.JFrame implements Runnable {
         vOficina.setLocationRelativeTo(null);
         vOficina.setVisible(true);
         oficina.setVisible(true);
-        
+
         ImageIcon off = new ImageIcon(getClass().getResource("/Imagenes/ofi.jpg"));
         jLabel15.setIcon(off);
         chic.setUbic(0);
         bon.setUbic(0);
-        
+        barraBat = 0;
         cam.setVisible(false);
         camCerrar.setVisible(false);
         puertizq.setVisible(false);
@@ -768,6 +822,7 @@ public class Main extends javax.swing.JFrame implements Runnable {
         jumpscareFreddysinLuz.setVisible(false);
         jumpscareFoxy.setVisible(false);
         jumpscareGF.setVisible(false);
+        Win5a6.setVisible(false);
 
         HiloHora hHora = new HiloHora(lbHora, lbHoraCam);
         Ref = hHora;
@@ -780,7 +835,12 @@ public class Main extends javax.swing.JFrame implements Runnable {
 
     private void btn_opencamMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_opencamMouseEntered
         //hiloMon.start();
+        contVecesCam++;
+        contVecesCamClose = 0;
         banderaCamara = 1; //
+        if (contVecesCam == 1) {
+            barraBat++;
+        }
         HiloCamAnimation hCam = new HiloCamAnimation(cam, oficina, povcam);
         hCam.start();
 
@@ -796,11 +856,13 @@ public class Main extends javax.swing.JFrame implements Runnable {
             btn_puertaizq.setIcon(btnverdeiz);
             hCD.start();
             banderaPuertaIz = 1;
+            barraBat++;
         } else if (banderaPuertaIz == 1) {
             HiloOpenDoor hOD = new HiloOpenDoor(puertizq);
             //ImageIcon btnverdeiz = new ImageIcon(getClass().getResource("/Imagenes/btnVerdeIz"));
             btn_puertaizq.setIcon(null);
             hOD.start();
+            barraBat--;
             banderaPuertaIz = 0;
         }
 
@@ -817,17 +879,24 @@ public class Main extends javax.swing.JFrame implements Runnable {
             btn_puertader.setIcon(btnverdeiz);
             hCD.start();
             banderaPuertaDer = 1;
+            barraBat++;
         } else if (banderaPuertaDer == 1) { //abrir
             HiloOpenDoorDerecha hOD = new HiloOpenDoorDerecha(puertder);
             //ImageIcon btnverdeiz = new ImageIcon(getClass().getResource("/Imagenes/btnVerdeIz"));
             btn_puertader.setIcon(null);
             hOD.start();
+            barraBat--;
             banderaPuertaDer = 0;
         }
     }//GEN-LAST:event_btn_puertaderMouseClicked
 
     private void btn_closecamMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_closecamMouseEntered
         banderaCamara = 0;
+        contVecesCamClose++;
+        contVecesCam = 0;
+        if (contVecesCamClose == 1) {
+            barraBat--;
+        }
         HiloCloseCam hCloseCam = new HiloCloseCam(camCerrar, oficina, povcam);
         hCloseCam.start();
     }//GEN-LAST:event_btn_closecamMouseEntered
@@ -888,12 +957,14 @@ public class Main extends javax.swing.JFrame implements Runnable {
             puertaLuzizq.setIcon(btnluzPuertader);
             ventanaizq.setIcon(btnluzVentanader);
             banderaLuzIz = 1;
+            barraBat++;
         } else if (banderaLuzIz == 1) { //APAGAR
             //ImageIcon btnverdeiz = new ImageIcon(getClass().getResource("/Imagenes/btnVerdeIz"));
             btn_luzizq.setIcon(null);
             puertaLuzizq.setIcon(null);
             ventanaizq.setIcon(null);
             banderaLuzIz = 0;
+            barraBat--;
         }
     }//GEN-LAST:event_btn_luzizqMouseClicked
 
@@ -907,12 +978,14 @@ public class Main extends javax.swing.JFrame implements Runnable {
             puertaLuzder.setIcon(btnluzPuertader);
             ventanader.setIcon(btnluzVentanader);
             banderaLuzDer = 1;
+            barraBat++;
         } else if (banderaLuzDer == 1) { //APAGAR
             //ImageIcon btnverdeiz = new ImageIcon(getClass().getResource("/Imagenes/btnVerdeIz"));
             btn_luzder.setIcon(null);
             puertaLuzder.setIcon(null);
             ventanader.setIcon(null);
             banderaLuzDer = 0;
+            barraBat--;
         }
 
     }//GEN-LAST:event_btn_luzderMouseClicked
@@ -960,6 +1033,12 @@ public class Main extends javax.swing.JFrame implements Runnable {
         this.repaint();
 
     }
+    
+    public void Bateria() {
+
+        
+        
+    }
 
     public void llenarMisCuentasList() {
 
@@ -995,6 +1074,8 @@ public class Main extends javax.swing.JFrame implements Runnable {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BadEnding;
+    private javax.swing.JLabel BateriaRestante;
+    private javax.swing.JLabel BateriaRestanteCam;
     private javax.swing.JLabel GO;
     private javax.swing.JPanel GameOver;
     private javax.swing.JPanel GoodEnding;
@@ -1007,6 +1088,8 @@ public class Main extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel JLbtnNuevaPartidaAdmin;
     private javax.swing.JTextField Jtxtf_UsuarioAdd;
     private javax.swing.JPanel PantallaNegra;
+    private javax.swing.JLabel UsoBateria;
+    private javax.swing.JLabel UsoBateriaCam;
     private javax.swing.JPanel Win5a6;
     private javax.swing.JLabel bade;
     private javax.swing.JLabel btnContinuarNocheAdmin;
@@ -1040,12 +1123,16 @@ public class Main extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -1091,7 +1178,10 @@ public class Main extends javax.swing.JFrame implements Runnable {
     private int contador = 0;
     private int contador2 = 0;
     private boolean isAlive = true;
-    private Bonnie bon = new Bonnie(15);
+    private int barraBat = 0;
+    private double DrenajeBat = 100;
+    private int EnteroDrenajeBat = (int) DrenajeBat;
+    private Bonnie bon = new Bonnie(3);
     private Chica chic = new Chica(3);
 
     @Override
@@ -1117,7 +1207,11 @@ public class Main extends javax.swing.JFrame implements Runnable {
             System.out.println("Bonnie pos: " + bon.getUbic());
             System.out.println();
             System.out.println("Chica pos: " + chic.getUbic());
+            System.out.println();
+            System.out.println("Bat" + barraBat);
 
+            
+            BateriaRestante.setText(String.valueOf(EnteroDrenajeBat) + "%");
             if (locationCamara.equals("stage")) { // 1A
                 if (bon.getUbic() == 0 && chic.getUbic() == 0) { //estan los tres
                     ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/showstage_todos.jpg"));
@@ -1298,38 +1392,64 @@ public class Main extends javax.swing.JFrame implements Runnable {
                 hJSBon.start();
                 return;
             }
-            
+
             if (chic.getUbic() == 10 && banderaPuertaDer == 0 && banderaCamara == 0) {
                 HiloJSChica hJSChic = new HiloJSChica(jumpscareChica, this, vOficina, oficina);
                 hJSChic.start();
                 return;
             }
-            
+
             if (chic.getUbic() == 9 && banderaPuertaDer == 1) {
                 chic.setUbic(1);
             }
-            
+
             if (bon.getUbic() == 8 && banderaPuertaIz == 1) {
                 bon.setUbic(1);
             }
-            
-            
-            
-            
-            
-            
+
+            if (barraBat == 0) {
+                ImageIcon barraBateria = new ImageIcon(getClass().getResource("/Imagenes/0bat.jpeg"));
+                UsoBateria.setIcon(barraBateria);
+                UsoBateriaCam.setIcon(barraBateria);
+                
+            } else if (barraBat == 1) {
+                ImageIcon barraBateria = new ImageIcon(getClass().getResource("/Imagenes/1bat.jpeg"));
+                UsoBateria.setIcon(barraBateria);
+                UsoBateriaCam.setIcon(barraBateria);
+                DrenajeBat = DrenajeBat-0.2;
+            } else if (barraBat == 2) {
+                ImageIcon barraBateria = new ImageIcon(getClass().getResource("/Imagenes/2bat.jpeg"));
+                UsoBateria.setIcon(barraBateria);
+                UsoBateriaCam.setIcon(barraBateria);
+                DrenajeBat = DrenajeBat-0.4;
+            } else if (barraBat == 3) {
+                ImageIcon barraBateria = new ImageIcon(getClass().getResource("/Imagenes/3bat.jpeg"));
+                UsoBateria.setIcon(barraBateria);
+                UsoBateriaCam.setIcon(barraBateria);
+                DrenajeBat = DrenajeBat-0.6;
+            } else if (barraBat == 4) {
+                ImageIcon barraBateria = new ImageIcon(getClass().getResource("/Imagenes/4bat.jpeg"));
+                UsoBateria.setIcon(barraBateria);
+                UsoBateriaCam.setIcon(barraBateria);
+                DrenajeBat = DrenajeBat-0.8;
+            } else if (barraBat == 5) {
+                ImageIcon barraBateria = new ImageIcon(getClass().getResource("/Imagenes/5bat.jpeg"));
+                UsoBateria.setIcon(barraBateria);
+                UsoBateriaCam.setIcon(barraBateria);
+                DrenajeBat = DrenajeBat-0.10;
+            }
+
             //NOCHE 2
             
             
             
             
-            
-            
-
             contador++;
             if (!Ref.isAlive()) {
+                HiloGane hGane = new HiloGane(Win5a6, this, vOficina, oficina);
+                hGane.start();
                 isAlive = false;
-                
+
                 //Ref.stop();
                 System.out.println("Fin hilo");
                 return;
