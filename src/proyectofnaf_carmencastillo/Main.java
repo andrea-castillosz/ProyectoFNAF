@@ -23,7 +23,14 @@ import javax.swing.Timer;
 public class Main extends javax.swing.JFrame implements Runnable {
 
     private ArrayList<Usuario> usuarios;
-    private int mouseX, mouseY;
+    
+    private boolean noche1Admin = true;
+    private boolean noche2Admin = false;
+    private boolean noche3Admin = false;
+    private boolean noche4Admin = false;
+    private boolean CustnocheAdmin = false;
+    
+    
     private int banderaPuertaIz = 0;
     private int banderaPuertaDer = 0;
     private int banderaLuzDer = 0;
@@ -57,28 +64,32 @@ public class Main extends javax.swing.JFrame implements Runnable {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        vMenuJuego = new javax.swing.JDialog();
-        jPanel2 = new javax.swing.JPanel();
-        JLbtnContinuarNoche = new javax.swing.JLabel();
-        JLbtnNuevaPartida = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         vCrearUsuario = new javax.swing.JDialog();
         jPanel3 = new javax.swing.JPanel();
-        userLabel3 = new javax.swing.JLabel();
-        Jtxtf_UsuarioAdd = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
-        userLabel4 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
+        Jtxtf_UsuarioAdd = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        CrearUser = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        userLabel4 = new javax.swing.JLabel();
+        userLabel5 = new javax.swing.JLabel();
+        userLabel6 = new javax.swing.JLabel();
+        vMenuJuegoJugador = new javax.swing.JDialog();
+        jPanel6 = new javax.swing.JPanel();
+        btnContinuarNocheAdmin2 = new javax.swing.JLabel();
+        JLbtnNochePers2 = new javax.swing.JLabel();
+        btnContinuarNocheAdmin3 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
         vMenuJuegoAdmin = new javax.swing.JDialog();
         jPanel4 = new javax.swing.JPanel();
+        btnContinuarNocheAdmin1 = new javax.swing.JLabel();
         JLbtnNochePers1 = new javax.swing.JLabel();
         btnContinuarNocheAdmin = new javax.swing.JLabel();
-        JLbtnNuevaPartidaAdmin = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -86,6 +97,8 @@ public class Main extends javax.swing.JFrame implements Runnable {
         jLabel13 = new javax.swing.JLabel();
         vOficina = new javax.swing.JFrame();
         oficina = new javax.swing.JPanel();
+        lbCualNocheEs = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
         BateriaRestante = new javax.swing.JLabel();
         UsoBateria = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -133,6 +146,8 @@ public class Main extends javax.swing.JFrame implements Runnable {
         jsBon = new javax.swing.JLabel();
         jumpscareChica = new javax.swing.JPanel();
         jsChica = new javax.swing.JLabel();
+        jumpscareFreddyNormal = new javax.swing.JPanel();
+        jsFredN = new javax.swing.JLabel();
         jumpscareFreddysinLuz = new javax.swing.JPanel();
         jsFred = new javax.swing.JLabel();
         jumpscareFoxy = new javax.swing.JPanel();
@@ -158,63 +173,16 @@ public class Main extends javax.swing.JFrame implements Runnable {
         JLbtnCrearUser = new javax.swing.JLabel();
         JLbtnCrearUser1 = new javax.swing.JLabel();
 
-        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        JLbtnContinuarNoche.setFont(new java.awt.Font("Verdana", 0, 26)); // NOI18N
-        JLbtnContinuarNoche.setForeground(new java.awt.Color(255, 255, 255));
-        JLbtnContinuarNoche.setText("Continuar Noche");
-        jPanel2.add(JLbtnContinuarNoche, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 330, 220, 40));
-
-        JLbtnNuevaPartida.setFont(new java.awt.Font("Verdana", 0, 26)); // NOI18N
-        JLbtnNuevaPartida.setForeground(new java.awt.Color(255, 255, 255));
-        JLbtnNuevaPartida.setText("Nueva Partida");
-        jPanel2.add(JLbtnNuevaPartida, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, 200, 40));
-
-        jLabel4.setFont(new java.awt.Font("Verdana", 0, 36)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Five");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, 80, 50));
-
-        jLabel5.setFont(new java.awt.Font("Verdana", 0, 36)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Nights");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 130, 70));
-
-        jLabel6.setFont(new java.awt.Font("Verdana", 0, 36)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("at");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 50, 50));
-
-        jLabel7.setFont(new java.awt.Font("Verdana", 0, 36)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Freddy´s");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 170, 60));
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/me srive (1).gif"))); // NOI18N
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 540));
-
-        javax.swing.GroupLayout vMenuJuegoLayout = new javax.swing.GroupLayout(vMenuJuego.getContentPane());
-        vMenuJuego.getContentPane().setLayout(vMenuJuegoLayout);
-        vMenuJuegoLayout.setHorizontalGroup(
-            vMenuJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        vMenuJuegoLayout.setVerticalGroup(
-            vMenuJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
         jPanel3.setBackground(new java.awt.Color(0, 0, 0));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        userLabel3.setFont(new java.awt.Font("Roboto Light", 1, 24)); // NOI18N
-        userLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        userLabel3.setText("Crear");
-        jPanel3.add(userLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 400, -1, -1));
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/helpmi.gif"))); // NOI18N
+        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 70, 510, 500));
+
+        jPanel5.setBackground(new java.awt.Color(0, 0, 0));
 
         Jtxtf_UsuarioAdd.setBackground(new java.awt.Color(0, 0, 0));
-        Jtxtf_UsuarioAdd.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        Jtxtf_UsuarioAdd.setFont(new java.awt.Font("Five Fonts at Freddy's", 0, 24)); // NOI18N
         Jtxtf_UsuarioAdd.setForeground(new java.awt.Color(255, 255, 255));
         Jtxtf_UsuarioAdd.setBorder(null);
         Jtxtf_UsuarioAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -222,30 +190,68 @@ public class Main extends javax.swing.JFrame implements Runnable {
                 Jtxtf_UsuarioAddActionPerformed(evt);
             }
         });
-        jPanel3.add(Jtxtf_UsuarioAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, 650, 50));
 
         jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, 650, 20));
 
-        userLabel4.setFont(new java.awt.Font("Roboto Light", 1, 36)); // NOI18N
+        CrearUser.setFont(new java.awt.Font("Roboto Light", 1, 24)); // NOI18N
+        CrearUser.setForeground(new java.awt.Color(255, 255, 255));
+        CrearUser.setText("Crear");
+        CrearUser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CrearUserMouseClicked(evt);
+            }
+        });
+
+        jComboBox1.setFont(new java.awt.Font("Five Fonts at Freddy's", 0, 18)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "EASY", "HARD" }));
+
+        userLabel4.setFont(new java.awt.Font("Roboto Light", 1, 24)); // NOI18N
         userLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        userLabel4.setText("CREAR USUARIO");
-        jPanel3.add(userLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, -1, -1));
+        userLabel4.setText("DIFICULTAD");
 
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/helpmi.gif"))); // NOI18N
-        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 70, 510, 500));
+        userLabel5.setFont(new java.awt.Font("Roboto Light", 1, 40)); // NOI18N
+        userLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        userLabel5.setText("CREAR USUARIO");
 
-        jPanel5.setBackground(new java.awt.Color(0, 0, 0));
+        userLabel6.setFont(new java.awt.Font("Roboto Light", 1, 24)); // NOI18N
+        userLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        userLabel6.setText("NOMBRE DE USUARIO");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1460, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(110, 110, 110)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(userLabel5)
+                    .addComponent(userLabel6)
+                    .addComponent(userLabel4)
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jComboBox1, 0, 650, Short.MAX_VALUE)
+                        .addComponent(CrearUser, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(Jtxtf_UsuarioAdd)
+                        .addComponent(jSeparator1)))
+                .addContainerGap(700, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 650, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(98, 98, 98)
+                .addComponent(userLabel5)
+                .addGap(59, 59, 59)
+                .addComponent(userLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Jtxtf_UsuarioAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addComponent(userLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52)
+                .addComponent(CrearUser)
+                .addGap(115, 115, 115))
         );
 
         jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1460, 650));
@@ -261,51 +267,98 @@ public class Main extends javax.swing.JFrame implements Runnable {
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jPanel6.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnContinuarNocheAdmin2.setFont(new java.awt.Font("Verdana", 0, 36)); // NOI18N
+        btnContinuarNocheAdmin2.setForeground(new java.awt.Color(255, 255, 255));
+        btnContinuarNocheAdmin2.setText("Continuar Noche");
+        jPanel6.add(btnContinuarNocheAdmin2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, 330, 40));
+
+        JLbtnNochePers2.setFont(new java.awt.Font("Verdana", 0, 36)); // NOI18N
+        JLbtnNochePers2.setForeground(new java.awt.Color(255, 255, 255));
+        JLbtnNochePers2.setText("Noche Personalizada");
+        jPanel6.add(JLbtnNochePers2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 490, 390, 40));
+
+        btnContinuarNocheAdmin3.setFont(new java.awt.Font("Verdana", 0, 36)); // NOI18N
+        btnContinuarNocheAdmin3.setForeground(new java.awt.Color(255, 255, 255));
+        btnContinuarNocheAdmin3.setText("Continuar Noche");
+        jPanel6.add(btnContinuarNocheAdmin3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, 330, 40));
+
+        jLabel20.setFont(new java.awt.Font("Verdana", 0, 45)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel20.setText("Five");
+        jPanel6.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 190, 50));
+
+        jLabel21.setFont(new java.awt.Font("Verdana", 0, 45)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel21.setText("Nights");
+        jPanel6.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 240, 70));
+
+        jLabel22.setFont(new java.awt.Font("Verdana", 0, 45)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel22.setText("at");
+        jPanel6.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 160, 50));
+
+        jLabel23.setFont(new java.awt.Font("Verdana", 0, 45)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel23.setText("Freddy´s");
+        jPanel6.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 280, 60));
+
+        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Menus.gif"))); // NOI18N
+        jPanel6.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1460, 650));
+
+        javax.swing.GroupLayout vMenuJuegoJugadorLayout = new javax.swing.GroupLayout(vMenuJuegoJugador.getContentPane());
+        vMenuJuegoJugador.getContentPane().setLayout(vMenuJuegoJugadorLayout);
+        vMenuJuegoJugadorLayout.setHorizontalGroup(
+            vMenuJuegoJugadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        vMenuJuegoJugadorLayout.setVerticalGroup(
+            vMenuJuegoJugadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
         jPanel4.setBackground(new java.awt.Color(0, 0, 0));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        JLbtnNochePers1.setFont(new java.awt.Font("Verdana", 0, 26)); // NOI18N
+        btnContinuarNocheAdmin1.setFont(new java.awt.Font("Verdana", 0, 36)); // NOI18N
+        btnContinuarNocheAdmin1.setForeground(new java.awt.Color(255, 255, 255));
+        btnContinuarNocheAdmin1.setText("Continuar Noche");
+        jPanel4.add(btnContinuarNocheAdmin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, 330, 40));
+
+        JLbtnNochePers1.setFont(new java.awt.Font("Verdana", 0, 36)); // NOI18N
         JLbtnNochePers1.setForeground(new java.awt.Color(255, 255, 255));
         JLbtnNochePers1.setText("Noche Personalizada");
-        jPanel4.add(JLbtnNochePers1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 400, 280, 40));
+        jPanel4.add(JLbtnNochePers1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 490, 390, 40));
 
-        btnContinuarNocheAdmin.setFont(new java.awt.Font("Verdana", 0, 26)); // NOI18N
+        btnContinuarNocheAdmin.setFont(new java.awt.Font("Verdana", 0, 36)); // NOI18N
         btnContinuarNocheAdmin.setForeground(new java.awt.Color(255, 255, 255));
         btnContinuarNocheAdmin.setText("Continuar Noche");
-        jPanel4.add(btnContinuarNocheAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 330, 220, 40));
+        jPanel4.add(btnContinuarNocheAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, 330, 40));
 
-        JLbtnNuevaPartidaAdmin.setFont(new java.awt.Font("Verdana", 0, 26)); // NOI18N
-        JLbtnNuevaPartidaAdmin.setForeground(new java.awt.Color(255, 255, 255));
-        JLbtnNuevaPartidaAdmin.setText("Nueva Partida");
-        JLbtnNuevaPartidaAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                JLbtnNuevaPartidaAdminMouseClicked(evt);
-            }
-        });
-        jPanel4.add(JLbtnNuevaPartidaAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, 200, 40));
-
-        jLabel9.setFont(new java.awt.Font("Verdana", 0, 36)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Verdana", 0, 45)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Five");
-        jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, 80, 50));
+        jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 190, 50));
 
-        jLabel10.setFont(new java.awt.Font("Verdana", 0, 36)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Verdana", 0, 45)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Nights");
-        jPanel4.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 130, 70));
+        jPanel4.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 240, 70));
 
-        jLabel11.setFont(new java.awt.Font("Verdana", 0, 36)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Verdana", 0, 45)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("at");
-        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 50, 50));
+        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 160, 50));
 
-        jLabel12.setFont(new java.awt.Font("Verdana", 0, 36)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Verdana", 0, 45)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Freddy´s");
-        jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 170, 60));
+        jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 280, 60));
 
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/me srive (1).gif"))); // NOI18N
-        jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 540));
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Menus.gif"))); // NOI18N
+        jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1460, 650));
 
         javax.swing.GroupLayout vMenuJuegoAdminLayout = new javax.swing.GroupLayout(vMenuJuegoAdmin.getContentPane());
         vMenuJuegoAdmin.getContentPane().setLayout(vMenuJuegoAdminLayout);
@@ -324,6 +377,17 @@ public class Main extends javax.swing.JFrame implements Runnable {
         oficina.setBackground(new java.awt.Color(0, 0, 0));
         oficina.setMinimumSize(new java.awt.Dimension(1463, 650));
         oficina.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lbCualNocheEs.setBackground(new java.awt.Color(255, 255, 255));
+        lbCualNocheEs.setFont(new java.awt.Font("Five Fonts at Freddy's", 0, 18)); // NOI18N
+        lbCualNocheEs.setForeground(new java.awt.Color(255, 255, 255));
+        oficina.add(lbCualNocheEs, new org.netbeans.lib.awtextra.AbsoluteConstraints(1430, 70, 30, 40));
+
+        jLabel19.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel19.setFont(new java.awt.Font("Five Fonts at Freddy's", 0, 18)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel19.setText("Night");
+        oficina.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(1360, 70, 60, 40));
 
         BateriaRestante.setBackground(new java.awt.Color(255, 255, 255));
         BateriaRestante.setFont(new java.awt.Font("Five Fonts at Freddy's", 0, 18)); // NOI18N
@@ -570,6 +634,21 @@ public class Main extends javax.swing.JFrame implements Runnable {
 
         vOficina.getContentPane().add(jumpscareChica, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        jsFredN.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/jsFreddy2.gif"))); // NOI18N
+
+        javax.swing.GroupLayout jumpscareFreddyNormalLayout = new javax.swing.GroupLayout(jumpscareFreddyNormal);
+        jumpscareFreddyNormal.setLayout(jumpscareFreddyNormalLayout);
+        jumpscareFreddyNormalLayout.setHorizontalGroup(
+            jumpscareFreddyNormalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jsFredN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jumpscareFreddyNormalLayout.setVerticalGroup(
+            jumpscareFreddyNormalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jsFredN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        vOficina.getContentPane().add(jumpscareFreddyNormal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         jsFred.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/jsFreddy.gif"))); // NOI18N
 
         javax.swing.GroupLayout jumpscareFreddysinLuzLayout = new javax.swing.GroupLayout(jumpscareFreddysinLuz);
@@ -709,7 +788,7 @@ public class Main extends javax.swing.JFrame implements Runnable {
         jLabel1.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         jLabel1.setText("Log-In");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/helpy-fnaf-unscreen.gif"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/helpyYA.gif"))); // NOI18N
 
         JLbtnCrearUser.setFont(new java.awt.Font("Verdana", 0, 30)); // NOI18N
         JLbtnCrearUser.setForeground(new java.awt.Color(255, 255, 255));
@@ -734,24 +813,24 @@ public class Main extends javax.swing.JFrame implements Runnable {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(571, Short.MAX_VALUE)
+                .addContainerGap(159, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(JLbtnCrearUser1)
                     .addComponent(JLbtnCrearUser, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(JCB_LogIn, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addGap(64, 64, 64)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33))
+                .addGap(144, 144, 144)
+                .addComponent(jLabel2)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(160, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 682, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(197, 197, 197)
                 .addComponent(JLbtnCrearUser1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
                 .addComponent(JLbtnCrearUser, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -759,7 +838,7 @@ public class Main extends javax.swing.JFrame implements Runnable {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(JCB_LogIn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(141, 141, 141))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -798,41 +877,6 @@ public class Main extends javax.swing.JFrame implements Runnable {
 
     }//GEN-LAST:event_JLbtnCrearUser1MouseClicked
 
-    private void JLbtnNuevaPartidaAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JLbtnNuevaPartidaAdminMouseClicked
-
-        vMenuJuegoAdmin.setVisible(false);
-        vOficina.pack();
-        vOficina.setLocationRelativeTo(null);
-        vOficina.setVisible(true);
-        oficina.setVisible(true);
-
-        ImageIcon off = new ImageIcon(getClass().getResource("/Imagenes/ofi.jpg"));
-        jLabel15.setIcon(off);
-        chic.setUbic(0);
-        bon.setUbic(0);
-        barraBat = 0;
-        cam.setVisible(false);
-        camCerrar.setVisible(false);
-        puertizq.setVisible(false);
-        //puertizq1.setVisible(false);
-        puertder.setVisible(false);
-        povcam.setVisible(false);
-        jumpscareBonnie.setVisible(false);
-        jumpscareChica.setVisible(false);
-        jumpscareFreddysinLuz.setVisible(false);
-        jumpscareFoxy.setVisible(false);
-        jumpscareGF.setVisible(false);
-        Win5a6.setVisible(false);
-
-        HiloHora hHora = new HiloHora(lbHora, lbHoraCam);
-        Ref = hHora;
-        hHora.start();
-        Thread noche = new Thread(this);
-        noche.start();
-//        no.start();
-
-    }//GEN-LAST:event_JLbtnNuevaPartidaAdminMouseClicked
-
     private void btn_opencamMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_opencamMouseEntered
         //hiloMon.start();
         contVecesCam++;
@@ -840,6 +884,7 @@ public class Main extends javax.swing.JFrame implements Runnable {
         banderaCamara = 1; //
         if (contVecesCam == 1) {
             barraBat++;
+            //DrenajeBat = DrenajeBat-0.2;
         }
         HiloCamAnimation hCam = new HiloCamAnimation(cam, oficina, povcam);
         hCam.start();
@@ -856,6 +901,7 @@ public class Main extends javax.swing.JFrame implements Runnable {
             btn_puertaizq.setIcon(btnverdeiz);
             hCD.start();
             banderaPuertaIz = 1;
+            //DrenajeBat = DrenajeBat-0.2;
             barraBat++;
         } else if (banderaPuertaIz == 1) {
             HiloOpenDoor hOD = new HiloOpenDoor(puertizq);
@@ -879,6 +925,7 @@ public class Main extends javax.swing.JFrame implements Runnable {
             btn_puertader.setIcon(btnverdeiz);
             hCD.start();
             banderaPuertaDer = 1;
+            //DrenajeBat = DrenajeBat-0.2;
             barraBat++;
         } else if (banderaPuertaDer == 1) { //abrir
             HiloOpenDoorDerecha hOD = new HiloOpenDoorDerecha(puertder);
@@ -957,6 +1004,7 @@ public class Main extends javax.swing.JFrame implements Runnable {
             puertaLuzizq.setIcon(btnluzPuertader);
             ventanaizq.setIcon(btnluzVentanader);
             banderaLuzIz = 1;
+            //DrenajeBat = DrenajeBat-0.2;
             barraBat++;
         } else if (banderaLuzIz == 1) { //APAGAR
             //ImageIcon btnverdeiz = new ImageIcon(getClass().getResource("/Imagenes/btnVerdeIz"));
@@ -978,6 +1026,7 @@ public class Main extends javax.swing.JFrame implements Runnable {
             puertaLuzder.setIcon(btnluzPuertader);
             ventanader.setIcon(btnluzVentanader);
             banderaLuzDer = 1;
+            //DrenajeBat = DrenajeBat-0.2;
             barraBat++;
         } else if (banderaLuzDer == 1) { //APAGAR
             //ImageIcon btnverdeiz = new ImageIcon(getClass().getResource("/Imagenes/btnVerdeIz"));
@@ -989,6 +1038,12 @@ public class Main extends javax.swing.JFrame implements Runnable {
         }
 
     }//GEN-LAST:event_btn_luzderMouseClicked
+
+    private void CrearUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CrearUserMouseClicked
+        
+        
+        
+    }//GEN-LAST:event_CrearUserMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1033,11 +1088,23 @@ public class Main extends javax.swing.JFrame implements Runnable {
         this.repaint();
 
     }
-    
+
     public void Bateria() {
 
-        
-        
+        if (barraBat == 0) {
+
+        } else if (barraBat == 1) {
+            DrenajeBat = DrenajeBat - 0.2;
+        } else if (barraBat == 2) {
+            DrenajeBat = DrenajeBat - 0.4;
+        } else if (barraBat == 3) {
+            DrenajeBat = DrenajeBat - 0.6;
+        } else if (barraBat == 4) {
+            DrenajeBat = DrenajeBat - 0.8;
+        } else if (barraBat == 5) {
+            DrenajeBat = DrenajeBat - 1;
+        }
+
     }
 
     public void llenarMisCuentasList() {
@@ -1076,16 +1143,15 @@ public class Main extends javax.swing.JFrame implements Runnable {
     private javax.swing.JPanel BadEnding;
     private javax.swing.JLabel BateriaRestante;
     private javax.swing.JLabel BateriaRestanteCam;
+    private javax.swing.JLabel CrearUser;
     private javax.swing.JLabel GO;
     private javax.swing.JPanel GameOver;
     private javax.swing.JPanel GoodEnding;
     private javax.swing.JComboBox<String> JCB_LogIn;
-    private javax.swing.JLabel JLbtnContinuarNoche;
     private javax.swing.JLabel JLbtnCrearUser;
     private javax.swing.JLabel JLbtnCrearUser1;
     private javax.swing.JLabel JLbtnNochePers1;
-    private javax.swing.JLabel JLbtnNuevaPartida;
-    private javax.swing.JLabel JLbtnNuevaPartidaAdmin;
+    private javax.swing.JLabel JLbtnNochePers2;
     private javax.swing.JTextField Jtxtf_UsuarioAdd;
     private javax.swing.JPanel PantallaNegra;
     private javax.swing.JLabel UsoBateria;
@@ -1093,6 +1159,9 @@ public class Main extends javax.swing.JFrame implements Runnable {
     private javax.swing.JPanel Win5a6;
     private javax.swing.JLabel bade;
     private javax.swing.JLabel btnContinuarNocheAdmin;
+    private javax.swing.JLabel btnContinuarNocheAdmin1;
+    private javax.swing.JLabel btnContinuarNocheAdmin2;
+    private javax.swing.JLabel btnContinuarNocheAdmin3;
     private javax.swing.JLabel btn_Cam1A;
     private javax.swing.JLabel btn_Cam1B;
     private javax.swing.JLabel btn_Cam1C;
@@ -1116,6 +1185,7 @@ public class Main extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel fondo;
     private javax.swing.JLabel fondo1;
     private javax.swing.JLabel goode;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1126,32 +1196,36 @@ public class Main extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel jsBon;
     private javax.swing.JLabel jsChica;
     private javax.swing.JLabel jsFox;
     private javax.swing.JLabel jsFred;
+    private javax.swing.JLabel jsFredN;
     private javax.swing.JLabel jsFreddyN;
     private javax.swing.JLabel jsGF;
     private javax.swing.JPanel jumpscareBonnie;
     private javax.swing.JPanel jumpscareChica;
     private javax.swing.JPanel jumpscareFoxy;
     private javax.swing.JPanel jumpscareFredNormal;
+    private javax.swing.JPanel jumpscareFreddyNormal;
     private javax.swing.JPanel jumpscareFreddysinLuz;
     private javax.swing.JPanel jumpscareGF;
+    private javax.swing.JLabel lbCualNocheEs;
     private javax.swing.JLabel lbHora;
     private javax.swing.JLabel lbHoraCam;
     private javax.swing.JLabel lbMapa;
@@ -1165,11 +1239,12 @@ public class Main extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel puertder;
     private javax.swing.JLabel puertizq;
     private javax.swing.JLabel setearCamara;
-    private javax.swing.JLabel userLabel3;
     private javax.swing.JLabel userLabel4;
+    private javax.swing.JLabel userLabel5;
+    private javax.swing.JLabel userLabel6;
     private javax.swing.JDialog vCrearUsuario;
-    private javax.swing.JDialog vMenuJuego;
     private javax.swing.JDialog vMenuJuegoAdmin;
+    private javax.swing.JDialog vMenuJuegoJugador;
     private javax.swing.JFrame vOficina;
     private javax.swing.JLabel ventanader;
     private javax.swing.JLabel ventanaizq;
@@ -1181,37 +1256,55 @@ public class Main extends javax.swing.JFrame implements Runnable {
     private int barraBat = 0;
     private double DrenajeBat = 100;
     private int EnteroDrenajeBat = (int) DrenajeBat;
-    private Bonnie bon = new Bonnie(3);
-    private Chica chic = new Chica(3);
+    private Bonnie bon = new Bonnie(15);
+    private Chica chic = new Chica(15);
 
     @Override
     public void run() {
 
         while (isAlive) {
             contador2++;
+//            HiloBateria hBateria = new HiloBateria(barraBat, DrenajeBat);
+//            hBateria.start();
+
+            
 
             try {
                 Thread.sleep(1);
             } catch (Exception e) {
             }
+            
+            
+            
+            
+            
+            
             System.out.println("");
             System.out.println(contador2);
-            System.out.println(contador);
+            //System.out.println(contador);
             System.out.println();
-            if (contador2 == 4000) {
+            if (contador2 == 10000) {
                 bon.movimiento();
                 chic.movimiento();
+                //Bateria();
                 contador2 = 0;
             }
 
+            if (contador2 % 1000 == 0) {
+                Bateria();
+            }
+            
             System.out.println("Bonnie pos: " + bon.getUbic());
             System.out.println();
             System.out.println("Chica pos: " + chic.getUbic());
             System.out.println();
-            System.out.println("Bat" + barraBat);
+            System.out.println("Bat " + barraBat);
+            System.out.println("ENTERO RESTANTE " + EnteroDrenajeBat);
+            System.out.println("RESTANTE " + DrenajeBat);
 
-            
-            BateriaRestante.setText(String.valueOf(EnteroDrenajeBat) + "%");
+            EnteroDrenajeBat = (int) DrenajeBat;
+            BateriaRestante.setText(" " + String.valueOf(EnteroDrenajeBat) + "%");
+            BateriaRestanteCam.setText(" " + String.valueOf(EnteroDrenajeBat) + "%");
             if (locationCamara.equals("stage")) { // 1A
                 if (bon.getUbic() == 0 && chic.getUbic() == 0) { //estan los tres
                     ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/showstage_todos.jpg"));
@@ -1411,39 +1504,35 @@ public class Main extends javax.swing.JFrame implements Runnable {
                 ImageIcon barraBateria = new ImageIcon(getClass().getResource("/Imagenes/0bat.jpeg"));
                 UsoBateria.setIcon(barraBateria);
                 UsoBateriaCam.setIcon(barraBateria);
-                
+
             } else if (barraBat == 1) {
                 ImageIcon barraBateria = new ImageIcon(getClass().getResource("/Imagenes/1bat.jpeg"));
                 UsoBateria.setIcon(barraBateria);
                 UsoBateriaCam.setIcon(barraBateria);
-                DrenajeBat = DrenajeBat-0.2;
+
             } else if (barraBat == 2) {
                 ImageIcon barraBateria = new ImageIcon(getClass().getResource("/Imagenes/2bat.jpeg"));
                 UsoBateria.setIcon(barraBateria);
                 UsoBateriaCam.setIcon(barraBateria);
-                DrenajeBat = DrenajeBat-0.4;
+
             } else if (barraBat == 3) {
                 ImageIcon barraBateria = new ImageIcon(getClass().getResource("/Imagenes/3bat.jpeg"));
                 UsoBateria.setIcon(barraBateria);
                 UsoBateriaCam.setIcon(barraBateria);
-                DrenajeBat = DrenajeBat-0.6;
+
             } else if (barraBat == 4) {
                 ImageIcon barraBateria = new ImageIcon(getClass().getResource("/Imagenes/4bat.jpeg"));
                 UsoBateria.setIcon(barraBateria);
                 UsoBateriaCam.setIcon(barraBateria);
-                DrenajeBat = DrenajeBat-0.8;
+
             } else if (barraBat == 5) {
                 ImageIcon barraBateria = new ImageIcon(getClass().getResource("/Imagenes/5bat.jpeg"));
                 UsoBateria.setIcon(barraBateria);
                 UsoBateriaCam.setIcon(barraBateria);
-                DrenajeBat = DrenajeBat-0.10;
+
             }
 
             //NOCHE 2
-            
-            
-            
-            
             contador++;
             if (!Ref.isAlive()) {
                 HiloGane hGane = new HiloGane(Win5a6, this, vOficina, oficina);
