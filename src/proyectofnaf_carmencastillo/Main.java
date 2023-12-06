@@ -14,6 +14,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
 /**
@@ -22,15 +23,13 @@ import javax.swing.Timer;
  */
 public class Main extends javax.swing.JFrame implements Runnable {
 
-    private ArrayList<Usuario> usuarios;
-    
+    //private ArrayList<Usuario> usuarios;
     private boolean noche1Admin = true;
     private boolean noche2Admin = false;
     private boolean noche3Admin = false;
     private boolean noche4Admin = false;
     private boolean CustnocheAdmin = false;
-    
-    
+
     private int banderaPuertaIz = 0;
     private int banderaPuertaDer = 0;
     private int banderaLuzDer = 0;
@@ -53,6 +52,7 @@ public class Main extends javax.swing.JFrame implements Runnable {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(true);
+        llenarMisCuentasList();
     }
 
     /**
@@ -71,10 +71,10 @@ public class Main extends javax.swing.JFrame implements Runnable {
         Jtxtf_UsuarioAdd = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         CrearUser = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
         userLabel4 = new javax.swing.JLabel();
         userLabel5 = new javax.swing.JLabel();
         userLabel6 = new javax.swing.JLabel();
+        chbx_diff = new javax.swing.JCheckBox();
         vMenuJuegoJugador = new javax.swing.JDialog();
         jPanel6 = new javax.swing.JPanel();
         btnContinuarNocheAdmin2 = new javax.swing.JLabel();
@@ -202,9 +202,6 @@ public class Main extends javax.swing.JFrame implements Runnable {
             }
         });
 
-        jComboBox1.setFont(new java.awt.Font("Five Fonts at Freddy's", 0, 18)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "EASY", "HARD" }));
-
         userLabel4.setFont(new java.awt.Font("Roboto Light", 1, 24)); // NOI18N
         userLabel4.setForeground(new java.awt.Color(255, 255, 255));
         userLabel4.setText("DIFICULTAD");
@@ -217,20 +214,29 @@ public class Main extends javax.swing.JFrame implements Runnable {
         userLabel6.setForeground(new java.awt.Color(255, 255, 255));
         userLabel6.setText("NOMBRE DE USUARIO");
 
+        chbx_diff.setFont(new java.awt.Font("Five Fonts at Freddy's", 0, 18)); // NOI18N
+        chbx_diff.setForeground(new java.awt.Color(255, 255, 255));
+        chbx_diff.setText("    Seleccione para poner su dificultad en EASY");
+        chbx_diff.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chbx_diffActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(110, 110, 110)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(chbx_diff, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
                     .addComponent(userLabel5)
                     .addComponent(userLabel6)
                     .addComponent(userLabel4)
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jComboBox1, 0, 650, Short.MAX_VALUE)
                         .addComponent(CrearUser, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(Jtxtf_UsuarioAdd)
+                        .addComponent(Jtxtf_UsuarioAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
                         .addComponent(jSeparator1)))
                 .addContainerGap(700, Short.MAX_VALUE))
         );
@@ -247,9 +253,9 @@ public class Main extends javax.swing.JFrame implements Runnable {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addComponent(userLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
+                .addGap(18, 18, 18)
+                .addComponent(chbx_diff, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
                 .addComponent(CrearUser)
                 .addGap(115, 115, 115))
         );
@@ -1040,10 +1046,44 @@ public class Main extends javax.swing.JFrame implements Runnable {
     }//GEN-LAST:event_btn_luzderMouseClicked
 
     private void CrearUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CrearUserMouseClicked
-        
-        
-        
+
+        boolean ValidUser = true;
+
+        AdminUser aUser = new AdminUser("./Usuarios.fok");
+        aUser.cargarArchivo();
+
+        String user = Jtxtf_UsuarioAdd.getText();
+        boolean easy;
+
+        if (chbx_diff.isSelected()) {
+            easy = true;
+        } else {
+            easy = false;
+        }
+
+        for (Usuario usuario : aUser.getListaUsuarios()) {
+            if (usuario.getUsuario().equals(user)) {
+                JOptionPane.showMessageDialog(vCrearUsuario, "Nombre de usuario ya existente.");
+                ValidUser = false;
+            }
+        }
+        if (Jtxtf_UsuarioAdd.getText().equals("")) {
+            JOptionPane.showMessageDialog(vCrearUsuario, "Cree su usuario.");
+            ValidUser = false;
+        }
+
+        if (ValidUser) {
+            Usuario u = new Usuario(user, easy, true, false, false, false, false);
+            aUser.setUsuario(u);
+            aUser.escribirArchivo();
+        }
+
+
     }//GEN-LAST:event_CrearUserMouseClicked
+
+    private void chbx_diffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbx_diffActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chbx_diffActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1109,17 +1149,14 @@ public class Main extends javax.swing.JFrame implements Runnable {
 
     public void llenarMisCuentasList() {
 
-        //Array del tamaño de usuarios creados
-        String[] user = new String[usuarios.size()];
-        int i = 0;
-        //Recorro mi arrayList de usuarios
-        for (Usuario u : usuarios) {
-            user[i] = u.getUsuario();
-            i++;
+        JCB_LogIn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{}));
+        AdminUser aCirc = new AdminUser("./Usuarios.fok");
+        aCirc.cargarArchivo();
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel) JCB_LogIn.getModel();
+        for (Usuario user : aCirc.getListaUsuarios()) {
+            modelo.addElement(user.getUsuario());
         }
 
-        //Lleno el comboBox
-        JCB_LogIn.setModel(new DefaultComboBoxModel(user)); //
     }
 
     public JLabel getSetearCamara() {
@@ -1181,11 +1218,11 @@ public class Main extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel btn_puertaizq;
     private javax.swing.JPanel cam;
     private javax.swing.JPanel camCerrar;
+    private javax.swing.JCheckBox chbx_diff;
     private javax.swing.JLabel cinaseis;
     private javax.swing.JLabel fondo;
     private javax.swing.JLabel fondo1;
     private javax.swing.JLabel goode;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1264,21 +1301,12 @@ public class Main extends javax.swing.JFrame implements Runnable {
 
         while (isAlive) {
             contador2++;
-//            HiloBateria hBateria = new HiloBateria(barraBat, DrenajeBat);
-//            hBateria.start();
-
-            
 
             try {
                 Thread.sleep(1);
             } catch (Exception e) {
             }
-            
-            
-            
-            
-            
-            
+
             System.out.println("");
             System.out.println(contador2);
             //System.out.println(contador);
@@ -1293,7 +1321,7 @@ public class Main extends javax.swing.JFrame implements Runnable {
             if (contador2 % 1000 == 0) {
                 Bateria();
             }
-            
+
             System.out.println("Bonnie pos: " + bon.getUbic());
             System.out.println();
             System.out.println("Chica pos: " + chic.getUbic());

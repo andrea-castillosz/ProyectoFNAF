@@ -11,7 +11,7 @@ package proyectofnaf_carmencastillo;
 public class Usuario {
     
     private String Usuario;
-    private int Partida;
+    private boolean Easy; //si es easy o no
     private boolean Noche1;
     private boolean Noche2;
     private boolean Noche3;
@@ -21,14 +21,14 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String Usuario, int Partida) {
+    public Usuario(String Usuario, boolean Easy) {
         this.Usuario = Usuario;
-        this.Partida = Partida;
+        this.Easy = Easy;
     }
 
-    public Usuario(String Usuario, int Partida, boolean Noche1, boolean Noche2, boolean Noche3, boolean Noche4, boolean Costume) {
+    public Usuario(String Usuario, boolean Easy, boolean Noche1, boolean Noche2, boolean Noche3, boolean Noche4, boolean Costume) {
         this.Usuario = Usuario;
-        this.Partida = Partida;
+        this.Easy = Easy;
         this.Noche1 = Noche1;
         this.Noche2 = Noche2;
         this.Noche3 = Noche3;
@@ -46,12 +46,12 @@ public class Usuario {
         this.Usuario = Usuario;
     }
 
-    public int getPartida() {
-        return Partida;
+    public boolean getEasy() {
+        return Easy;
     }
 
-    public void setPartida(int Partida) {
-        this.Partida = Partida;
+    public void setPartida(boolean Easy) {
+        this.Easy = Easy;
     }
     
     
