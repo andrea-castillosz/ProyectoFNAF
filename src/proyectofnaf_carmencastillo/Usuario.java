@@ -17,6 +17,7 @@ public class Usuario {
     private boolean Noche3;
     private boolean Noche4;
     private boolean Costume;
+    private int Noche;
 
     public Usuario() {
     }
@@ -26,7 +27,7 @@ public class Usuario {
         this.Easy = Easy;
     }
 
-    public Usuario(String Usuario, boolean Easy, boolean Noche1, boolean Noche2, boolean Noche3, boolean Noche4, boolean Costume) {
+    public Usuario(String Usuario, boolean Easy, boolean Noche1, boolean Noche2, boolean Noche3, boolean Noche4, boolean Costume, int Noche) {
         this.Usuario = Usuario;
         this.Easy = Easy;
         this.Noche1 = Noche1;
@@ -34,6 +35,7 @@ public class Usuario {
         this.Noche3 = Noche3;
         this.Noche4 = Noche4;
         this.Costume = Costume;
+        this.Noche = Noche;
     }
     
     
@@ -52,6 +54,22 @@ public class Usuario {
 
     public void setPartida(boolean Easy) {
         this.Easy = Easy;
+    }
+
+    public boolean isEasy() {
+        return Easy;
+    }
+
+    public void setEasy(boolean Easy) {
+        this.Easy = Easy;
+    }
+
+    public int getNoche() {
+        return Noche;
+    }
+
+    public void setNoche(int Noche) {
+        this.Noche = Noche;
     }
     
     

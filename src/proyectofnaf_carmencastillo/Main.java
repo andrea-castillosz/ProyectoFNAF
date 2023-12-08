@@ -77,9 +77,11 @@ public class Main extends javax.swing.JFrame implements Runnable {
         chbx_diff = new javax.swing.JCheckBox();
         vMenuJuegoJugador = new javax.swing.JDialog();
         jPanel6 = new javax.swing.JPanel();
-        btnContinuarNocheAdmin2 = new javax.swing.JLabel();
+        PonerPorCualNocheVa = new javax.swing.JLabel();
+        btnContinuarNoche = new javax.swing.JLabel();
         JLbtnNochePers2 = new javax.swing.JLabel();
-        btnContinuarNocheAdmin3 = new javax.swing.JLabel();
+        btnNuevaPartida = new javax.swing.JLabel();
+        koskd = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
@@ -171,7 +173,8 @@ public class Main extends javax.swing.JFrame implements Runnable {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         JLbtnCrearUser = new javax.swing.JLabel();
-        JLbtnCrearUser1 = new javax.swing.JLabel();
+        EntrarComoAdmin = new javax.swing.JLabel();
+        LogIn = new javax.swing.JLabel();
 
         jPanel3.setBackground(new java.awt.Color(0, 0, 0));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -276,20 +279,34 @@ public class Main extends javax.swing.JFrame implements Runnable {
         jPanel6.setBackground(new java.awt.Color(0, 0, 0));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnContinuarNocheAdmin2.setFont(new java.awt.Font("Verdana", 0, 36)); // NOI18N
-        btnContinuarNocheAdmin2.setForeground(new java.awt.Color(255, 255, 255));
-        btnContinuarNocheAdmin2.setText("Continuar Noche");
-        jPanel6.add(btnContinuarNocheAdmin2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, 330, 40));
+        PonerPorCualNocheVa.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        PonerPorCualNocheVa.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel6.add(PonerPorCualNocheVa, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 400, 60, 30));
+
+        btnContinuarNoche.setFont(new java.awt.Font("Verdana", 0, 36)); // NOI18N
+        btnContinuarNoche.setForeground(new java.awt.Color(255, 255, 255));
+        btnContinuarNoche.setText("Continuar Noche");
+        btnContinuarNoche.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnContinuarNocheMouseClicked(evt);
+            }
+        });
+        jPanel6.add(btnContinuarNoche, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 390, 330, 40));
 
         JLbtnNochePers2.setFont(new java.awt.Font("Verdana", 0, 36)); // NOI18N
         JLbtnNochePers2.setForeground(new java.awt.Color(255, 255, 255));
         JLbtnNochePers2.setText("Noche Personalizada");
-        jPanel6.add(JLbtnNochePers2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 490, 390, 40));
+        jPanel6.add(JLbtnNochePers2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 500, 390, 40));
 
-        btnContinuarNocheAdmin3.setFont(new java.awt.Font("Verdana", 0, 36)); // NOI18N
-        btnContinuarNocheAdmin3.setForeground(new java.awt.Color(255, 255, 255));
-        btnContinuarNocheAdmin3.setText("Continuar Noche");
-        jPanel6.add(btnContinuarNocheAdmin3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, 330, 40));
+        btnNuevaPartida.setFont(new java.awt.Font("Verdana", 0, 36)); // NOI18N
+        btnNuevaPartida.setForeground(new java.awt.Color(255, 255, 255));
+        btnNuevaPartida.setText("Nueva Partida");
+        jPanel6.add(btnNuevaPartida, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 260, 40));
+
+        koskd.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        koskd.setForeground(new java.awt.Color(255, 255, 255));
+        koskd.setText("Night");
+        jPanel6.add(koskd, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 400, 60, 30));
 
         jLabel20.setFont(new java.awt.Font("Verdana", 0, 45)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
@@ -792,7 +809,7 @@ public class Main extends javax.swing.JFrame implements Runnable {
         JCB_LogIn.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        jLabel1.setText("Log-In");
+        jLabel1.setText("Ingresar con Usuario");
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/helpyYA.gif"))); // NOI18N
 
@@ -805,12 +822,21 @@ public class Main extends javax.swing.JFrame implements Runnable {
             }
         });
 
-        JLbtnCrearUser1.setFont(new java.awt.Font("Verdana", 0, 30)); // NOI18N
-        JLbtnCrearUser1.setForeground(new java.awt.Color(255, 255, 255));
-        JLbtnCrearUser1.setText("Entrar como Administrador");
-        JLbtnCrearUser1.addMouseListener(new java.awt.event.MouseAdapter() {
+        EntrarComoAdmin.setFont(new java.awt.Font("Verdana", 0, 30)); // NOI18N
+        EntrarComoAdmin.setForeground(new java.awt.Color(255, 255, 255));
+        EntrarComoAdmin.setText("Entrar como Administrador");
+        EntrarComoAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                JLbtnCrearUser1MouseClicked(evt);
+                EntrarComoAdminMouseClicked(evt);
+            }
+        });
+
+        LogIn.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
+        LogIn.setForeground(new java.awt.Color(255, 255, 255));
+        LogIn.setText("Log-In");
+        LogIn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LogInMouseClicked(evt);
             }
         });
 
@@ -821,11 +847,16 @@ public class Main extends javax.swing.JFrame implements Runnable {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(159, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(JLbtnCrearUser1)
-                    .addComponent(JLbtnCrearUser, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JCB_LogIn, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(144, 144, 144)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(EntrarComoAdmin)
+                            .addComponent(JLbtnCrearUser, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(JCB_LogIn, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addGap(144, 144, 144))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(LogIn)
+                        .addGap(121, 121, 121)))
                 .addComponent(jLabel2)
                 .addContainerGap())
         );
@@ -837,13 +868,15 @@ public class Main extends javax.swing.JFrame implements Runnable {
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(197, 197, 197)
-                .addComponent(JLbtnCrearUser1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(EntrarComoAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
                 .addComponent(JLbtnCrearUser, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(JCB_LogIn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LogIn, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -874,14 +907,14 @@ public class Main extends javax.swing.JFrame implements Runnable {
         // TODO add your handling code here:
     }//GEN-LAST:event_Jtxtf_UsuarioAddActionPerformed
 
-    private void JLbtnCrearUser1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JLbtnCrearUser1MouseClicked
+    private void EntrarComoAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EntrarComoAdminMouseClicked
 
         this.setVisible(false);
         vMenuJuegoAdmin.pack();
         vMenuJuegoAdmin.setLocationRelativeTo(null);
         vMenuJuegoAdmin.setVisible(true);
 
-    }//GEN-LAST:event_JLbtnCrearUser1MouseClicked
+    }//GEN-LAST:event_EntrarComoAdminMouseClicked
 
     private void btn_opencamMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_opencamMouseEntered
         //hiloMon.start();
@@ -1073,9 +1106,15 @@ public class Main extends javax.swing.JFrame implements Runnable {
         }
 
         if (ValidUser) {
-            Usuario u = new Usuario(user, easy, true, false, false, false, false);
+            Usuario u = new Usuario(user, easy, true, false, false, false, false, 1);
             aUser.setUsuario(u);
             aUser.escribirArchivo();
+            Jtxtf_UsuarioAdd.setText("");
+            vCrearUsuario.pack();
+            vCrearUsuario.setLocationRelativeTo(null);
+            vCrearUsuario.setVisible(false);
+            this.setVisible(true);
+            llenarMisCuentasList();
         }
 
 
@@ -1084,6 +1123,37 @@ public class Main extends javax.swing.JFrame implements Runnable {
     private void chbx_diffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbx_diffActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_chbx_diffActionPerformed
+
+    private void LogInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogInMouseClicked
+        this.setVisible(true);
+        vMenuJuegoJugador.pack();
+        vMenuJuegoJugador.setLocationRelativeTo(null);
+        vMenuJuegoJugador.setVisible(true);
+        
+        AdminUser aUser = new AdminUser("./Usuarios.fok");
+        aUser.cargarArchivo();
+        
+        for (Usuario usuario : aUser.getListaUsuarios()) {
+            if (JCB_LogIn.getSelectedItem().equals(usuario.getUsuario())) {
+                if (usuario.getNoche() == 1) {
+                    PonerPorCualNocheVa.setText("1");
+                } else if (usuario.getNoche() == 2){
+                    PonerPorCualNocheVa.setText("2");
+                } else if (usuario.getNoche() == 3){
+                    PonerPorCualNocheVa.setText("3");
+                } else if (usuario.getNoche() == 4){
+                    PonerPorCualNocheVa.setText("4");
+                } 
+                
+            }
+        }
+    }//GEN-LAST:event_LogInMouseClicked
+
+    private void btnContinuarNocheMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnContinuarNocheMouseClicked
+        
+        
+        
+    }//GEN-LAST:event_btnContinuarNocheMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1146,6 +1216,65 @@ public class Main extends javax.swing.JFrame implements Runnable {
         }
 
     }
+    
+    public boolean SacarModo(){
+        boolean Modo = true;
+        
+        AdminUser aUser = new AdminUser("./Usuarios.fok");
+        aUser.cargarArchivo();
+        
+        for (Usuario u : aUser.getListaUsuarios()) {
+            if (JCB_LogIn.getSelectedItem().equals(u.getUsuario())) {
+                Modo = u.isEasy();
+            }
+        }
+        return Modo;
+    }
+    
+    public boolean BuscarNoche1(){
+        
+        boolean Noche = true;
+        
+        AdminUser aUser = new AdminUser("./Usuarios.fok");
+        aUser.cargarArchivo();
+        
+        for (Usuario u : aUser.getListaUsuarios()) {
+            if (JCB_LogIn.getSelectedItem().equals(u.getUsuario())) {
+                Noche = u.isNoche1();
+            }
+        }
+        return Noche;        
+    }
+    
+    public boolean BuscarNoche2(){
+        
+        boolean Noche2 = true;
+        
+        AdminUser aUser = new AdminUser("./Usuarios.fok");
+        aUser.cargarArchivo();
+        
+        for (Usuario u : aUser.getListaUsuarios()) {
+            if (JCB_LogIn.getSelectedItem().equals(u.getUsuario())) {
+                Noche2 = u.isNoche2();
+            }
+        }
+        return Noche2;        
+    }
+    
+    public boolean BuscarNoche3(){
+        
+        boolean Noche3 = true;
+        
+        AdminUser aUser = new AdminUser("./Usuarios.fok");
+        aUser.cargarArchivo();
+        
+        for (Usuario u : aUser.getListaUsuarios()) {
+            if (JCB_LogIn.getSelectedItem().equals(u.getUsuario())) {
+                Noche3 = u.isNoche3();
+            }
+        }
+        return Noche3;        
+    }
 
     public void llenarMisCuentasList() {
 
@@ -1181,24 +1310,26 @@ public class Main extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel BateriaRestante;
     private javax.swing.JLabel BateriaRestanteCam;
     private javax.swing.JLabel CrearUser;
+    private javax.swing.JLabel EntrarComoAdmin;
     private javax.swing.JLabel GO;
     private javax.swing.JPanel GameOver;
     private javax.swing.JPanel GoodEnding;
     private javax.swing.JComboBox<String> JCB_LogIn;
     private javax.swing.JLabel JLbtnCrearUser;
-    private javax.swing.JLabel JLbtnCrearUser1;
     private javax.swing.JLabel JLbtnNochePers1;
     private javax.swing.JLabel JLbtnNochePers2;
     private javax.swing.JTextField Jtxtf_UsuarioAdd;
+    private javax.swing.JLabel LogIn;
     private javax.swing.JPanel PantallaNegra;
+    private javax.swing.JLabel PonerPorCualNocheVa;
     private javax.swing.JLabel UsoBateria;
     private javax.swing.JLabel UsoBateriaCam;
     private javax.swing.JPanel Win5a6;
     private javax.swing.JLabel bade;
+    private javax.swing.JLabel btnContinuarNoche;
     private javax.swing.JLabel btnContinuarNocheAdmin;
     private javax.swing.JLabel btnContinuarNocheAdmin1;
-    private javax.swing.JLabel btnContinuarNocheAdmin2;
-    private javax.swing.JLabel btnContinuarNocheAdmin3;
+    private javax.swing.JLabel btnNuevaPartida;
     private javax.swing.JLabel btn_Cam1A;
     private javax.swing.JLabel btn_Cam1B;
     private javax.swing.JLabel btn_Cam1C;
@@ -1262,6 +1393,7 @@ public class Main extends javax.swing.JFrame implements Runnable {
     private javax.swing.JPanel jumpscareFreddyNormal;
     private javax.swing.JPanel jumpscareFreddysinLuz;
     private javax.swing.JPanel jumpscareGF;
+    private javax.swing.JLabel koskd;
     private javax.swing.JLabel lbCualNocheEs;
     private javax.swing.JLabel lbHora;
     private javax.swing.JLabel lbHoraCam;
@@ -1298,7 +1430,8 @@ public class Main extends javax.swing.JFrame implements Runnable {
 
     @Override
     public void run() {
-
+        
+        
         while (isAlive) {
             contador2++;
 
@@ -1306,7 +1439,13 @@ public class Main extends javax.swing.JFrame implements Runnable {
                 Thread.sleep(1);
             } catch (Exception e) {
             }
-
+            
+            if (rootPaneCheckingEnabled) {
+                if (rootPaneCheckingEnabled) {
+                    
+                }
+            }
+            
             System.out.println("");
             System.out.println(contador2);
             //System.out.println(contador);
