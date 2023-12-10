@@ -15,28 +15,29 @@ import javax.swing.JPanel;
  */
 public class HiloJSFreddyNormal extends Thread{
     
-    private final JPanel jsFredNorm;
+    private final JPanel jsFred;
     private JFrame inicio;
     private JFrame oficina;
     private JPanel ofi;
+    private JPanel estaticc;
+    private JPanel deadc;
     private int contador = 0;
     private boolean isAlive = true;
     
-//    public HiloJumpscareB(JPanel camaragif) {
-//        this.jsBon = camaragif;
-//    }
     
-    public HiloJSFreddyNormal(JPanel jsFredNorm, JFrame inicio, JFrame oficina, JPanel ofi) {
-        this.jsFredNorm = jsFredNorm;
+    public HiloJSFreddyNormal(JPanel jsFred, JFrame inicio, JFrame oficina, JPanel ofi, JPanel estaticc, JPanel deadc) {
+        this.jsFred = jsFred;
         this.inicio = inicio;
         this.oficina =  oficina;
         this.ofi = ofi;
+        this.estaticc = estaticc;
+        this.deadc = deadc;
     }
     
     @Override
     public void run() {
         ofi.setVisible(false);
-        jsFredNorm.setVisible(true);
+        jsFred.setVisible(true);
         while (isAlive) {
             contador++;
             if (contador == 500) {
@@ -44,15 +45,18 @@ public class HiloJSFreddyNormal extends Thread{
                 isAlive = false;
             }
             try {
-                Thread.sleep(1);
+                Thread.sleep(2);
             } catch (InterruptedException ex) {
                 Logger.getLogger(HiloJSFreddyNormal.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        jsFredNorm.setVisible(false);
-        oficina.setVisible(false);
-        inicio.setVisible(true);
-        ofi.setVisible(true);
+        
+        jsFred.setVisible(false);
+        ofi.setVisible(false);
+        HiloEstatica estatica = new HiloEstatica(estaticc, inicio, oficina, ofi, deadc);
+        estatica.start();
+        //oficina.setVisible(false);
+        //inicio.setVisible(true);
         
     }
     

@@ -47,14 +47,17 @@ public class Usuario {
     public void setUsuario(String Usuario) {
         this.Usuario = Usuario;
     }
+    
 
-    public boolean getEasy() {
-        return Easy;
-    }
-
-    public void setPartida(boolean Easy) {
-        this.Easy = Easy;
-    }
+    
+//    public boolean getEasy() {
+//        return Easy;
+//    }
+//
+//    public void setPartida(boolean Easy) {
+//        this.Easy = Easy;
+//    }
+    
 
     public boolean isEasy() {
         return Easy;
@@ -64,6 +67,8 @@ public class Usuario {
         this.Easy = Easy;
     }
 
+    
+    
     public int getNoche() {
         return Noche;
     }

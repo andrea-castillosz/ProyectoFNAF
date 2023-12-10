@@ -15,25 +15,29 @@ import javax.swing.JPanel;
  */
 public class HiloJSFreddySinLuz extends Thread{
     
-    private final JPanel jsFredSinLuz;
+    private final JPanel jsFLuz;
     private JFrame inicio;
     private JFrame oficina;
     private JPanel ofi;
+    private JPanel estaticc;
+    private JPanel deadc;
     private int contador = 0;
     private boolean isAlive = true;
     
     
-    public HiloJSFreddySinLuz(JPanel jsBon, JFrame inicio, JFrame oficina, JPanel ofi) {
-        this.jsFredSinLuz = jsBon;
+    public HiloJSFreddySinLuz(JPanel jsFLuz, JFrame inicio, JFrame oficina, JPanel ofi, JPanel estaticc, JPanel deadc) {
+        this.jsFLuz = jsFLuz;
         this.inicio = inicio;
         this.oficina =  oficina;
         this.ofi = ofi;
+        this.estaticc = estaticc;
+        this.deadc = deadc;
     }
     
     @Override
     public void run() {
         ofi.setVisible(false);
-        jsFredSinLuz.setVisible(true);
+        jsFLuz.setVisible(true);
         while (isAlive) {
             contador++;
             if (contador == 500) {
@@ -41,15 +45,18 @@ public class HiloJSFreddySinLuz extends Thread{
                 isAlive = false;
             }
             try {
-                Thread.sleep(1);
+                Thread.sleep(2);
             } catch (InterruptedException ex) {
                 Logger.getLogger(HiloJSFreddySinLuz.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        jsFredSinLuz.setVisible(false);
-        oficina.setVisible(false);
-        inicio.setVisible(true);
-        ofi.setVisible(true);
+        
+        jsFLuz.setVisible(false);
+        ofi.setVisible(false);
+        HiloEstatica estatica = new HiloEstatica(estaticc, inicio, oficina, ofi, deadc);
+        estatica.start();
+        //oficina.setVisible(false);
+        //inicio.setVisible(true);
         
     }
     

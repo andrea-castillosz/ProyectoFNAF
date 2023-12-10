@@ -19,18 +19,19 @@ public class HiloJSChica extends Thread{
     private JFrame inicio;
     private JFrame oficina;
     private JPanel ofi;
+    private JPanel estaticc;
+    private JPanel deadc;
     private int contador = 0;
     private boolean isAlive = true;
     
-//    public HiloJumpscareB(JPanel camaragif) {
-//        this.jsBon = camaragif;
-//    }
     
-    public HiloJSChica(JPanel jsChic, JFrame inicio, JFrame oficina, JPanel ofi) {
+    public HiloJSChica(JPanel jsChic, JFrame inicio, JFrame oficina, JPanel ofi, JPanel estaticc, JPanel deadc) {
         this.jsChic = jsChic;
         this.inicio = inicio;
         this.oficina =  oficina;
         this.ofi = ofi;
+        this.estaticc = estaticc;
+        this.deadc = deadc;
     }
     
     @Override
@@ -51,9 +52,11 @@ public class HiloJSChica extends Thread{
         }
         
         jsChic.setVisible(false);
-        ofi.setVisible(true);
-        oficina.setVisible(false);
-        inicio.setVisible(true);
+        ofi.setVisible(false);
+        HiloEstatica estatica = new HiloEstatica(estaticc, inicio, oficina, ofi, deadc);
+        estatica.start();
+        //oficina.setVisible(false);
+        //inicio.setVisible(true);
         
     }
     

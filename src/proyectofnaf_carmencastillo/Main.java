@@ -29,6 +29,13 @@ public class Main extends javax.swing.JFrame implements Runnable {
     private boolean noche3Admin = false;
     private boolean noche4Admin = false;
     private boolean CustnocheAdmin = false;
+    //PARA EL USUARIO
+    private Usuario SelectUser = new Usuario();
+    private boolean N1Usuario = false;
+    private boolean N2Usuario = false;
+    private boolean N3Usuario = false;
+    private boolean N4Usuario = false;
+    private boolean CNUsuario = false;
 
     private int banderaPuertaIz = 0;
     private int banderaPuertaDer = 0;
@@ -52,7 +59,7 @@ public class Main extends javax.swing.JFrame implements Runnable {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(true);
-        llenarMisCuentasList();
+        llenarMisCuentasCB();
     }
 
     /**
@@ -162,7 +169,7 @@ public class Main extends javax.swing.JFrame implements Runnable {
         bade = new javax.swing.JLabel();
         GoodEnding = new javax.swing.JPanel();
         goode = new javax.swing.JLabel();
-        PantallaNegra = new javax.swing.JPanel();
+        Estatica = new javax.swing.JPanel();
         pantallan = new javax.swing.JLabel();
         GameOver = new javax.swing.JPanel();
         GO = new javax.swing.JLabel();
@@ -758,18 +765,20 @@ public class Main extends javax.swing.JFrame implements Runnable {
 
         vOficina.getContentPane().add(GoodEnding, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        javax.swing.GroupLayout PantallaNegraLayout = new javax.swing.GroupLayout(PantallaNegra);
-        PantallaNegra.setLayout(PantallaNegraLayout);
-        PantallaNegraLayout.setHorizontalGroup(
-            PantallaNegraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pantallan, javax.swing.GroupLayout.DEFAULT_SIZE, 1463, Short.MAX_VALUE)
+        pantallan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/static.gif"))); // NOI18N
+
+        javax.swing.GroupLayout EstaticaLayout = new javax.swing.GroupLayout(Estatica);
+        Estatica.setLayout(EstaticaLayout);
+        EstaticaLayout.setHorizontalGroup(
+            EstaticaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pantallan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        PantallaNegraLayout.setVerticalGroup(
-            PantallaNegraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pantallan, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
+        EstaticaLayout.setVerticalGroup(
+            EstaticaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pantallan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        vOficina.getContentPane().add(PantallaNegra, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        vOficina.getContentPane().add(Estatica, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         GO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/gameOver.jpg"))); // NOI18N
 
@@ -1114,7 +1123,7 @@ public class Main extends javax.swing.JFrame implements Runnable {
             vCrearUsuario.setLocationRelativeTo(null);
             vCrearUsuario.setVisible(false);
             this.setVisible(true);
-            llenarMisCuentasList();
+            llenarMisCuentasCB();
         }
 
 
@@ -1129,30 +1138,32 @@ public class Main extends javax.swing.JFrame implements Runnable {
         vMenuJuegoJugador.pack();
         vMenuJuegoJugador.setLocationRelativeTo(null);
         vMenuJuegoJugador.setVisible(true);
-        
+
         AdminUser aUser = new AdminUser("./Usuarios.fok");
         aUser.cargarArchivo();
-        
+
         for (Usuario usuario : aUser.getListaUsuarios()) {
             if (JCB_LogIn.getSelectedItem().equals(usuario.getUsuario())) {
+                SelectUser = usuario;
                 if (usuario.getNoche() == 1) {
                     PonerPorCualNocheVa.setText("1");
-                } else if (usuario.getNoche() == 2){
+                } else if (usuario.getNoche() == 2) {
                     PonerPorCualNocheVa.setText("2");
-                } else if (usuario.getNoche() == 3){
+                } else if (usuario.getNoche() == 3) {
                     PonerPorCualNocheVa.setText("3");
-                } else if (usuario.getNoche() == 4){
+                } else if (usuario.getNoche() == 4) {
                     PonerPorCualNocheVa.setText("4");
-                } 
-                
+                }
+
             }
         }
+
+
     }//GEN-LAST:event_LogInMouseClicked
 
     private void btnContinuarNocheMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnContinuarNocheMouseClicked
-        
-        
-        
+
+
     }//GEN-LAST:event_btnContinuarNocheMouseClicked
 
     /**
@@ -1216,13 +1227,13 @@ public class Main extends javax.swing.JFrame implements Runnable {
         }
 
     }
-    
-    public boolean SacarModo(){
+
+    public boolean SacarModo() {
         boolean Modo = true;
-        
+
         AdminUser aUser = new AdminUser("./Usuarios.fok");
         aUser.cargarArchivo();
-        
+
         for (Usuario u : aUser.getListaUsuarios()) {
             if (JCB_LogIn.getSelectedItem().equals(u.getUsuario())) {
                 Modo = u.isEasy();
@@ -1230,53 +1241,53 @@ public class Main extends javax.swing.JFrame implements Runnable {
         }
         return Modo;
     }
-    
-    public boolean BuscarNoche1(){
-        
+
+    public boolean BuscarNoche1() {
+
         boolean Noche = true;
-        
+
         AdminUser aUser = new AdminUser("./Usuarios.fok");
         aUser.cargarArchivo();
-        
+
         for (Usuario u : aUser.getListaUsuarios()) {
             if (JCB_LogIn.getSelectedItem().equals(u.getUsuario())) {
                 Noche = u.isNoche1();
             }
         }
-        return Noche;        
+        return Noche;
     }
-    
-    public boolean BuscarNoche2(){
-        
+
+    public boolean BuscarNoche2() {
+
         boolean Noche2 = true;
-        
+
         AdminUser aUser = new AdminUser("./Usuarios.fok");
         aUser.cargarArchivo();
-        
+
         for (Usuario u : aUser.getListaUsuarios()) {
             if (JCB_LogIn.getSelectedItem().equals(u.getUsuario())) {
-                Noche2 = u.isNoche2();
+                N2Usuario = u.isNoche2();
             }
         }
-        return Noche2;        
+        return Noche2;
     }
-    
-    public boolean BuscarNoche3(){
-        
+
+    public boolean BuscarNoche3() {
+
         boolean Noche3 = true;
-        
+
         AdminUser aUser = new AdminUser("./Usuarios.fok");
         aUser.cargarArchivo();
-        
+
         for (Usuario u : aUser.getListaUsuarios()) {
             if (JCB_LogIn.getSelectedItem().equals(u.getUsuario())) {
                 Noche3 = u.isNoche3();
             }
         }
-        return Noche3;        
+        return Noche3;
     }
 
-    public void llenarMisCuentasList() {
+    public void llenarMisCuentasCB() {
 
         JCB_LogIn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{}));
         AdminUser aCirc = new AdminUser("./Usuarios.fok");
@@ -1311,6 +1322,7 @@ public class Main extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel BateriaRestanteCam;
     private javax.swing.JLabel CrearUser;
     private javax.swing.JLabel EntrarComoAdmin;
+    private javax.swing.JPanel Estatica;
     private javax.swing.JLabel GO;
     private javax.swing.JPanel GameOver;
     private javax.swing.JPanel GoodEnding;
@@ -1320,7 +1332,6 @@ public class Main extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel JLbtnNochePers2;
     private javax.swing.JTextField Jtxtf_UsuarioAdd;
     private javax.swing.JLabel LogIn;
-    private javax.swing.JPanel PantallaNegra;
     private javax.swing.JLabel PonerPorCualNocheVa;
     private javax.swing.JLabel UsoBateria;
     private javax.swing.JLabel UsoBateriaCam;
@@ -1430,277 +1441,581 @@ public class Main extends javax.swing.JFrame implements Runnable {
 
     @Override
     public void run() {
-        
-        
+
         while (isAlive) {
+
             contador2++;
 
             try {
                 Thread.sleep(1);
             } catch (Exception e) {
             }
-            
-            if (rootPaneCheckingEnabled) {
-                if (rootPaneCheckingEnabled) {
-                    
+
+            if (SelectUser.isEasy() == true) {
+                if (SelectUser.isNoche1() == true) {  //NOCHE 1 EASY
+
+                    System.out.println("");
+                    System.out.println(contador2);
+                    //System.out.println(contador);
+                    System.out.println();
+
+                    if (contador2 == 10000) {
+                        bon.movimiento();
+                        chic.movimiento();
+                        //Bateria();
+                        contador2 = 0;
+                    }
+
+                    if (contador2 % 1000 == 0) {
+                        Bateria();
+                    }
+
+                    System.out.println("Bonnie pos: " + bon.getUbic());
+                    System.out.println();
+                    System.out.println("Chica pos: " + chic.getUbic());
+                    System.out.println();
+                    System.out.println("Bat " + barraBat);
+                    System.out.println("ENTERO RESTANTE " + EnteroDrenajeBat);
+                    System.out.println("RESTANTE " + DrenajeBat);
+
+                    EnteroDrenajeBat = (int) DrenajeBat;
+                    BateriaRestante.setText(" " + String.valueOf(EnteroDrenajeBat) + "%");
+                    BateriaRestanteCam.setText(" " + String.valueOf(EnteroDrenajeBat) + "%");
+                    if (locationCamara.equals("stage")) { // 1A
+                        if (bon.getUbic() == 0 && chic.getUbic() == 0) { //estan los tres
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/showstage_todos.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+                        if (bon.getUbic() != 0 && chic.getUbic() == 0) { //estan sin bonnie
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/SHSsinBonnie.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+                        if (bon.getUbic() == 0 && chic.getUbic() != 0) { //estan sin chica
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/SHSsinChica.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+                        if (bon.getUbic() != 0 && chic.getUbic() != 0) { //solo freddy
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/SHSSOLOFreddy.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+
+                    }
+
+                    if (locationCamara.equals("dinning")) { //1, 2 BONNIE Y CHICA //FREDDY SOLO 1 // bon 1 2 / chic 1 2 / fred 1 //1B
+
+                        if (bon.getUbic() != 1 && chic.getUbic() != 1 && chic.getUbic() != 2 && bon.getUbic() != 2) { //vacio
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/DinnerVacio.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+                        if (bon.getUbic() == 1 && chic.getUbic() != 1 && chic.getUbic() != 2 && bon.getUbic() != 2) { //bonnie 1
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/DinnerBonnie1.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+                        if (bon.getUbic() != 1 && chic.getUbic() != 1 && chic.getUbic() != 2 && bon.getUbic() == 2) { //bonnie 2
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/DinningBonnie2.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+                        if (bon.getUbic() != 1 && chic.getUbic() == 1 && chic.getUbic() != 2 && bon.getUbic() != 2) { //chica 1
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/DinnerChica1.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+                        if (bon.getUbic() != 1 && chic.getUbic() != 1 && chic.getUbic() == 2 && bon.getUbic() != 2) { //chica 2
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/DinnerChica2.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+                        if ((bon.getUbic() == 1 && chic.getUbic() == 1) || (chic.getUbic() == 2 && bon.getUbic() == 2)) { //si estan bonnie y chica
+                            bon.setUbic(3);
+                        }
+                        if ((bon.getUbic() == 1 && chic.getUbic() == 2) || (chic.getUbic() == 1 && bon.getUbic() == 2)) { //si estan bonnie y 
+                            bon.setUbic(3);
+                        }
+
+                    }
+
+                    if (locationCamara.equals("pirateCove")) { //FOXY 0 1 2 y si se fue // 1C
+                        ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/PirateC_0.jpg"));
+                        setearCamara.setIcon(showstage_todos);
+                    }
+
+                    if (locationCamara.equals("wHall")) { // gif fox 3 / bon 5 //2A
+
+                        if (bon.getUbic() != 5) { //VACIO
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/wHallVacio.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+                        if (bon.getUbic() == 5) { //BONNIE /tiene 7 posiciones creo
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/wHallBonnie.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+
+                    }
+
+                    if (locationCamara.equals("wHallCorner")) { //bon 7 // gf no se //2B
+
+                        if (bon.getUbic() != 7) { //VACIO
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/wHallCVacio.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+                        if (bon.getUbic() == 7) { //bonnie
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/wHallCBon.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+
+                    }
+
+                    if (locationCamara.equals("supplyCloset")) { // bon 6         //3
+
+                        if (bon.getUbic() != 6) { //VACIO
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/ClosetVacio.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+                        if (bon.getUbic() == 6) { //bonnie
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/ClosetBon.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+
+                    }
+
+                    if (locationCamara.equals("eHall")) { //chic 6 7 / fred 3 //4A
+
+                        if (chic.getUbic() != 6 && chic.getUbic() != 7) { //VACIO
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/eHallVacio.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+                        if (chic.getUbic() == 6 && chic.getUbic() != 7) { //CHICA
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/eHallChica6.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+                        if (chic.getUbic() != 6 && chic.getUbic() == 7) { //CHICA CERCA
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/eHallChica7.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+                    }
+
+                    if (locationCamara.equals("eHallCorner")) { //chic 8 / fred 4 //4B
+
+                        if (chic.getUbic() != 8) { //vacio
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/eHallCornerVacio.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+                        if (chic.getUbic() == 8) { //chica
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/eHallCornerChica.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+
+                    }
+
+                    if (locationCamara.equals("backstage")) { //bon 3 4            //5
+
+                        if (bon.getUbic() != 3 && bon.getUbic() != 4) { //vacio
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/backstVacio.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+                        if (bon.getUbic() == 3 && bon.getUbic() != 4) { //bonnie
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/backstBonnie1.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+                        if (bon.getUbic() != 3 && bon.getUbic() == 4) { //bonnie
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/backstBonnie2.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+
+                    }
+
+                    if (locationCamara.equals("kitchen")) { //chic 5            //6
+                        //camara desabilitada
+                        ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/static.gif"));
+                        setearCamara.setIcon(showstage_todos);
+
+                    }
+
+                    if (locationCamara.equals("restrooms")) { //chic 3 4 / fred 2     //7
+
+                        if (chic.getUbic() != 3 && chic.getUbic() != 4) { //VACIO
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/restroomVacio.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+                        if (chic.getUbic() == 3 && chic.getUbic() != 4) { //CHICA
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/restroomChica1.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+                        if (chic.getUbic() != 3 && chic.getUbic() == 4) { //CHICA CERCA
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/restroomChica2.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+
+                    }
+
+                    if (banderaLuzDer == 1 && chic.getUbic() == 9) {
+                        ImageIcon btnluzVentanader = new ImageIcon(getClass().getResource("/Imagenes/venDerLuzChica2.png"));
+                        ventanader.setIcon(btnluzVentanader);
+                    }
+
+                    if (banderaLuzIz == 1 && bon.getUbic() == 8) {
+                        ImageIcon btnluzPuertader = new ImageIcon(getClass().getResource("/Imagenes/bonofiLuzEn.jpg"));
+                        puertaLuzizq.setIcon(btnluzPuertader);
+                    }
+
+                    if (bon.getUbic() == 9 && banderaPuertaIz == 0 && banderaCamara == 0) {
+                        HiloJumpscareB hJSBon = new HiloJumpscareB(jumpscareBonnie, this, vOficina, oficina, Estatica, GameOver);
+                        hJSBon.start();
+                        return;
+                    }
+
+                    if (chic.getUbic() == 10 && banderaPuertaDer == 0 && banderaCamara == 0) {
+                        HiloJSChica hJSChic = new HiloJSChica(jumpscareChica, this, vOficina, oficina, Estatica, GameOver);
+                        hJSChic.start();
+                        return;
+                    }
+
+                    if (chic.getUbic() == 9 && banderaPuertaDer == 1) {
+                        chic.setUbic(1);
+                    }
+
+                    if (bon.getUbic() == 8 && banderaPuertaIz == 1) {
+                        bon.setUbic(1);
+                    }
+
+                    if (barraBat == 0) {
+                        ImageIcon barraBateria = new ImageIcon(getClass().getResource("/Imagenes/0bat.jpeg"));
+                        UsoBateria.setIcon(barraBateria);
+                        UsoBateriaCam.setIcon(barraBateria);
+
+                    } else if (barraBat == 1) {
+                        ImageIcon barraBateria = new ImageIcon(getClass().getResource("/Imagenes/1bat.jpeg"));
+                        UsoBateria.setIcon(barraBateria);
+                        UsoBateriaCam.setIcon(barraBateria);
+
+                    } else if (barraBat == 2) {
+                        ImageIcon barraBateria = new ImageIcon(getClass().getResource("/Imagenes/2bat.jpeg"));
+                        UsoBateria.setIcon(barraBateria);
+                        UsoBateriaCam.setIcon(barraBateria);
+
+                    } else if (barraBat == 3) {
+                        ImageIcon barraBateria = new ImageIcon(getClass().getResource("/Imagenes/3bat.jpeg"));
+                        UsoBateria.setIcon(barraBateria);
+                        UsoBateriaCam.setIcon(barraBateria);
+
+                    } else if (barraBat == 4) {
+                        ImageIcon barraBateria = new ImageIcon(getClass().getResource("/Imagenes/4bat.jpeg"));
+                        UsoBateria.setIcon(barraBateria);
+                        UsoBateriaCam.setIcon(barraBateria);
+
+                    } else if (barraBat == 5) {
+                        ImageIcon barraBateria = new ImageIcon(getClass().getResource("/Imagenes/5bat.jpeg"));
+                        UsoBateria.setIcon(barraBateria);
+                        UsoBateriaCam.setIcon(barraBateria);
+
+                    } //NOCHE 2
+                    contador++;
+
+                } else if (SelectUser.isNoche2() == true) {   //NOCHE 2 EASY
+                    if (contador2 == 10000) {
+                        bon.movimiento();
+                        chic.movimiento();
+                        //Bateria();
+                        contador2 = 0;
+                    }
+
+                    if (contador2 % 1000 == 0) {
+                        Bateria();
+                    }
+
+                    contador++;
+                } else if (SelectUser.isNoche3() == true) {  //NOCHE 3 EASY
+                    if (contador2 == 10000) {
+                        bon.movimiento();
+                        chic.movimiento();
+                        //Bateria();
+                        contador2 = 0;
+                    }
+
+                    if (contador2 % 1000 == 0) {
+                        Bateria();
+                    }
+
+                    contador++;
+                } else if (SelectUser.isNoche4() == true) { //NOCHE 4 EASY
+
+                    contador++;
+                } else if (SelectUser.isCostume() == true) { //NOCHE CUSTOM EASY
+
+                    contador++;
                 }
+
+            } else { //si es dificil
+
+                if (SelectUser.isNoche1() == true) {
+                    System.out.println("");
+                    System.out.println(contador2);
+                    //System.out.println(contador);
+                    System.out.println();
+                    if (contador2 == 10000) {
+                        bon.movimiento();
+                        chic.movimiento();
+                        //Bateria();
+                        contador2 = 0;
+                    }
+
+                    if (contador2 % 1000 == 0) {
+                        Bateria();
+                    }
+
+                    System.out.println("Bonnie pos: " + bon.getUbic());
+                    System.out.println();
+                    System.out.println("Chica pos: " + chic.getUbic());
+                    System.out.println();
+                    System.out.println("Bat " + barraBat);
+                    System.out.println("ENTERO RESTANTE " + EnteroDrenajeBat);
+                    System.out.println("RESTANTE " + DrenajeBat);
+
+                    EnteroDrenajeBat = (int) DrenajeBat;
+                    BateriaRestante.setText(" " + String.valueOf(EnteroDrenajeBat) + "%");
+                    BateriaRestanteCam.setText(" " + String.valueOf(EnteroDrenajeBat) + "%");
+                    if (locationCamara.equals("stage")) { // 1A
+                        if (bon.getUbic() == 0 && chic.getUbic() == 0) { //estan los tres
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/showstage_todos.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+                        if (bon.getUbic() != 0 && chic.getUbic() == 0) { //estan sin bonnie
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/SHSsinBonnie.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+                        if (bon.getUbic() == 0 && chic.getUbic() != 0) { //estan sin chica
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/SHSsinChica.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+                        if (bon.getUbic() != 0 && chic.getUbic() != 0) { //solo freddy
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/SHSSOLOFreddy.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+
+                    }
+
+                    if (locationCamara.equals("dinning")) { //1, 2 BONNIE Y CHICA //FREDDY SOLO 1 // bon 1 2 / chic 1 2 / fred 1 //1B
+
+                        if (bon.getUbic() != 1 && chic.getUbic() != 1 && chic.getUbic() != 2 && bon.getUbic() != 2) { //vacio
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/DinnerVacio.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+                        if (bon.getUbic() == 1 && chic.getUbic() != 1 && chic.getUbic() != 2 && bon.getUbic() != 2) { //bonnie 1
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/DinnerBonnie1.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+                        if (bon.getUbic() != 1 && chic.getUbic() != 1 && chic.getUbic() != 2 && bon.getUbic() == 2) { //bonnie 2
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/DinningBonnie2.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+                        if (bon.getUbic() != 1 && chic.getUbic() == 1 && chic.getUbic() != 2 && bon.getUbic() != 2) { //chica 1
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/DinnerChica1.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+                        if (bon.getUbic() != 1 && chic.getUbic() != 1 && chic.getUbic() == 2 && bon.getUbic() != 2) { //chica 2
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/DinnerChica2.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+                        if ((bon.getUbic() == 1 && chic.getUbic() == 1) || (chic.getUbic() == 2 && bon.getUbic() == 2)) { //si estan bonnie y chica
+                            bon.setUbic(3);
+                        }
+                        if ((bon.getUbic() == 1 && chic.getUbic() == 2) || (chic.getUbic() == 1 && bon.getUbic() == 2)) { //si estan bonnie y 
+                            bon.setUbic(3);
+                        }
+
+                    }
+
+                    if (locationCamara.equals("pirateCove")) { //FOXY 0 1 2 y si se fue // 1C
+                        ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/PirateC_0.jpg"));
+                        setearCamara.setIcon(showstage_todos);
+                    }
+
+                    if (locationCamara.equals("wHall")) { // gif fox 3 / bon 5 //2A
+
+                        if (bon.getUbic() != 5) { //VACIO
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/wHallVacio.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+                        if (bon.getUbic() == 5) { //BONNIE /tiene 7 posiciones creo
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/wHallBonnie.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+
+                    }
+
+                    if (locationCamara.equals("wHallCorner")) { //bon 7 // gf no se //2B
+
+                        if (bon.getUbic() != 7) { //VACIO
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/wHallCVacio.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+                        if (bon.getUbic() == 7) { //bonnie
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/wHallCBon.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+
+                    }
+
+                    if (locationCamara.equals("supplyCloset")) { // bon 6         //3
+
+                        if (bon.getUbic() != 6) { //VACIO
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/ClosetVacio.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+                        if (bon.getUbic() == 6) { //bonnie
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/ClosetBon.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+
+                    }
+
+                    if (locationCamara.equals("eHall")) { //chic 6 7 / fred 3 //4A
+
+                        if (chic.getUbic() != 6 && chic.getUbic() != 7) { //VACIO
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/eHallVacio.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+                        if (chic.getUbic() == 6 && chic.getUbic() != 7) { //CHICA
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/eHallChica6.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+                        if (chic.getUbic() != 6 && chic.getUbic() == 7) { //CHICA CERCA
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/eHallChica7.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+                    }
+
+                    if (locationCamara.equals("eHallCorner")) { //chic 8 / fred 4 //4B
+
+                        if (chic.getUbic() != 8) { //vacio
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/eHallCornerVacio.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+                        if (chic.getUbic() == 8) { //chica
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/eHallCornerChica.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+
+                    }
+
+                    if (locationCamara.equals("backstage")) { //bon 3 4            //5
+
+                        if (bon.getUbic() != 3 && bon.getUbic() != 4) { //vacio
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/backstVacio.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+                        if (bon.getUbic() == 3 && bon.getUbic() != 4) { //bonnie
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/backstBonnie1.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+                        if (bon.getUbic() != 3 && bon.getUbic() == 4) { //bonnie
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/backstBonnie2.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+
+                    }
+
+                    if (locationCamara.equals("kitchen")) { //chic 5            //6
+                        //camara desabilitada
+                        ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/static.gif"));
+                        setearCamara.setIcon(showstage_todos);
+
+                    }
+
+                    if (locationCamara.equals("restrooms")) { //chic 3 4 / fred 2     //7
+
+                        if (chic.getUbic() != 3 && chic.getUbic() != 4) { //VACIO
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/restroomVacio.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+                        if (chic.getUbic() == 3 && chic.getUbic() != 4) { //CHICA
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/restroomChica1.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+                        if (chic.getUbic() != 3 && chic.getUbic() == 4) { //CHICA CERCA
+                            ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/restroomChica2.jpg"));
+                            setearCamara.setIcon(showstage_todos);
+                        }
+
+                    }
+
+                    if (banderaLuzDer == 1 && chic.getUbic() == 9) {
+                        ImageIcon btnluzVentanader = new ImageIcon(getClass().getResource("/Imagenes/venDerLuzChica2.png"));
+                        ventanader.setIcon(btnluzVentanader);
+                    }
+
+                    if (banderaLuzIz == 1 && bon.getUbic() == 8) {
+                        ImageIcon btnluzPuertader = new ImageIcon(getClass().getResource("/Imagenes/bonofiLuzEn.jpg"));
+                        puertaLuzizq.setIcon(btnluzPuertader);
+                    }
+
+                    if (bon.getUbic() == 9 && banderaPuertaIz == 0 && banderaCamara == 0) {
+                        HiloJumpscareB hJSBon = new HiloJumpscareB(jumpscareBonnie, this, vOficina, oficina);
+                        hJSBon.start();
+                        return;
+                    }
+
+                    if (chic.getUbic() == 10 && banderaPuertaDer == 0 && banderaCamara == 0) {
+                        HiloJSChica hJSChic = new HiloJSChica(jumpscareChica, this, vOficina, oficina);
+                        hJSChic.start();
+                        return;
+                    }
+
+                    if (chic.getUbic() == 9 && banderaPuertaDer == 1) {
+                        chic.setUbic(1);
+                    }
+
+                    if (bon.getUbic() == 8 && banderaPuertaIz == 1) {
+                        bon.setUbic(1);
+                    }
+
+                    if (barraBat == 0) {
+                        ImageIcon barraBateria = new ImageIcon(getClass().getResource("/Imagenes/0bat.jpeg"));
+                        UsoBateria.setIcon(barraBateria);
+                        UsoBateriaCam.setIcon(barraBateria);
+
+                    } else if (barraBat == 1) {
+                        ImageIcon barraBateria = new ImageIcon(getClass().getResource("/Imagenes/1bat.jpeg"));
+                        UsoBateria.setIcon(barraBateria);
+                        UsoBateriaCam.setIcon(barraBateria);
+
+                    } else if (barraBat == 2) {
+                        ImageIcon barraBateria = new ImageIcon(getClass().getResource("/Imagenes/2bat.jpeg"));
+                        UsoBateria.setIcon(barraBateria);
+                        UsoBateriaCam.setIcon(barraBateria);
+
+                    } else if (barraBat == 3) {
+                        ImageIcon barraBateria = new ImageIcon(getClass().getResource("/Imagenes/3bat.jpeg"));
+                        UsoBateria.setIcon(barraBateria);
+                        UsoBateriaCam.setIcon(barraBateria);
+
+                    } else if (barraBat == 4) {
+                        ImageIcon barraBateria = new ImageIcon(getClass().getResource("/Imagenes/4bat.jpeg"));
+                        UsoBateria.setIcon(barraBateria);
+                        UsoBateriaCam.setIcon(barraBateria);
+
+                    } else if (barraBat == 5) {
+                        ImageIcon barraBateria = new ImageIcon(getClass().getResource("/Imagenes/5bat.jpeg"));
+                        UsoBateria.setIcon(barraBateria);
+                        UsoBateriaCam.setIcon(barraBateria);
+
+                    } //NOCHE 2
+                    contador++;
+
+                } else if (SelectUser.isNoche2() == true) {
+
+                    contador++;
+                } else if (SelectUser.isNoche3() == true) {
+
+                    contador++;
+                } else if (SelectUser.isNoche4() == true) {
+
+                    contador++;
+                } else if (SelectUser.isCostume() == true) {
+
+                    contador++;
+                }
+
             }
-            
-            System.out.println("");
-            System.out.println(contador2);
-            //System.out.println(contador);
-            System.out.println();
-            if (contador2 == 10000) {
-                bon.movimiento();
-                chic.movimiento();
-                //Bateria();
-                contador2 = 0;
-            }
 
-            if (contador2 % 1000 == 0) {
-                Bateria();
-            }
-
-            System.out.println("Bonnie pos: " + bon.getUbic());
-            System.out.println();
-            System.out.println("Chica pos: " + chic.getUbic());
-            System.out.println();
-            System.out.println("Bat " + barraBat);
-            System.out.println("ENTERO RESTANTE " + EnteroDrenajeBat);
-            System.out.println("RESTANTE " + DrenajeBat);
-
-            EnteroDrenajeBat = (int) DrenajeBat;
-            BateriaRestante.setText(" " + String.valueOf(EnteroDrenajeBat) + "%");
-            BateriaRestanteCam.setText(" " + String.valueOf(EnteroDrenajeBat) + "%");
-            if (locationCamara.equals("stage")) { // 1A
-                if (bon.getUbic() == 0 && chic.getUbic() == 0) { //estan los tres
-                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/showstage_todos.jpg"));
-                    setearCamara.setIcon(showstage_todos);
-                }
-                if (bon.getUbic() != 0 && chic.getUbic() == 0) { //estan sin bonnie
-                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/SHSsinBonnie.jpg"));
-                    setearCamara.setIcon(showstage_todos);
-                }
-                if (bon.getUbic() == 0 && chic.getUbic() != 0) { //estan sin chica
-                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/SHSsinChica.jpg"));
-                    setearCamara.setIcon(showstage_todos);
-                }
-                if (bon.getUbic() != 0 && chic.getUbic() != 0) { //solo freddy
-                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/SHSSOLOFreddy.jpg"));
-                    setearCamara.setIcon(showstage_todos);
-                }
-
-            }
-
-            if (locationCamara.equals("dinning")) { //1, 2 BONNIE Y CHICA //FREDDY SOLO 1 // bon 1 2 / chic 1 2 / fred 1 //1B
-
-                if (bon.getUbic() != 1 && chic.getUbic() != 1 && chic.getUbic() != 2 && bon.getUbic() != 2) { //vacio
-                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/DinnerVacio.jpg"));
-                    setearCamara.setIcon(showstage_todos);
-                }
-                if (bon.getUbic() == 1 && chic.getUbic() != 1 && chic.getUbic() != 2 && bon.getUbic() != 2) { //bonnie 1
-                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/DinnerBonnie1.jpg"));
-                    setearCamara.setIcon(showstage_todos);
-                }
-                if (bon.getUbic() != 1 && chic.getUbic() != 1 && chic.getUbic() != 2 && bon.getUbic() == 2) { //bonnie 2
-                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/DinningBonnie2.jpg"));
-                    setearCamara.setIcon(showstage_todos);
-                }
-                if (bon.getUbic() != 1 && chic.getUbic() == 1 && chic.getUbic() != 2 && bon.getUbic() != 2) { //chica 1
-                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/DinnerChica1.jpg"));
-                    setearCamara.setIcon(showstage_todos);
-                }
-                if (bon.getUbic() != 1 && chic.getUbic() != 1 && chic.getUbic() == 2 && bon.getUbic() != 2) { //chica 2
-                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/DinnerChica2.jpg"));
-                    setearCamara.setIcon(showstage_todos);
-                }
-                if ((bon.getUbic() == 1 && chic.getUbic() == 1) || (chic.getUbic() == 2 && bon.getUbic() == 2)) { //si estan bonnie y chica
-                    bon.setUbic(3);
-                }
-                if ((bon.getUbic() == 1 && chic.getUbic() == 2) || (chic.getUbic() == 1 && bon.getUbic() == 2)) { //si estan bonnie y 
-                    bon.setUbic(3);
-                }
-
-            }
-
-            if (locationCamara.equals("pirateCove")) { //FOXY 0 1 2 y si se fue // 1C
-                ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/PirateC_0.jpg"));
-                setearCamara.setIcon(showstage_todos);
-            }
-
-            if (locationCamara.equals("wHall")) { // gif fox 3 / bon 5 //2A
-
-                if (bon.getUbic() != 5) { //VACIO
-                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/wHallVacio.jpg"));
-                    setearCamara.setIcon(showstage_todos);
-                }
-                if (bon.getUbic() == 5) { //BONNIE /tiene 7 posiciones creo
-                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/wHallBonnie.jpg"));
-                    setearCamara.setIcon(showstage_todos);
-                }
-
-            }
-
-            if (locationCamara.equals("wHallCorner")) { //bon 7 // gf no se //2B
-
-                if (bon.getUbic() != 7) { //VACIO
-                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/wHallCVacio.jpg"));
-                    setearCamara.setIcon(showstage_todos);
-                }
-                if (bon.getUbic() == 7) { //bonnie
-                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/wHallCBon.jpg"));
-                    setearCamara.setIcon(showstage_todos);
-                }
-
-            }
-
-            if (locationCamara.equals("supplyCloset")) { // bon 6         //3
-
-                if (bon.getUbic() != 6) { //VACIO
-                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/ClosetVacio.jpg"));
-                    setearCamara.setIcon(showstage_todos);
-                }
-                if (bon.getUbic() == 6) { //bonnie
-                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/ClosetBon.jpg"));
-                    setearCamara.setIcon(showstage_todos);
-                }
-
-            }
-
-            if (locationCamara.equals("eHall")) { //chic 6 7 / fred 3 //4A
-
-                if (chic.getUbic() != 6 && chic.getUbic() != 7) { //VACIO
-                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/eHallVacio.jpg"));
-                    setearCamara.setIcon(showstage_todos);
-                }
-                if (chic.getUbic() == 6 && chic.getUbic() != 7) { //CHICA
-                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/eHallChica6.jpg"));
-                    setearCamara.setIcon(showstage_todos);
-                }
-                if (chic.getUbic() != 6 && chic.getUbic() == 7) { //CHICA CERCA
-                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/eHallChica7.jpg"));
-                    setearCamara.setIcon(showstage_todos);
-                }
-            }
-
-            if (locationCamara.equals("eHallCorner")) { //chic 8 / fred 4 //4B
-
-                if (chic.getUbic() != 8) { //vacio
-                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/eHallCornerVacio.jpg"));
-                    setearCamara.setIcon(showstage_todos);
-                }
-                if (chic.getUbic() == 8) { //chica
-                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/eHallCornerChica.jpg"));
-                    setearCamara.setIcon(showstage_todos);
-                }
-
-            }
-
-            if (locationCamara.equals("backstage")) { //bon 3 4            //5
-
-                if (bon.getUbic() != 3 && bon.getUbic() != 4) { //vacio
-                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/backstVacio.jpg"));
-                    setearCamara.setIcon(showstage_todos);
-                }
-                if (bon.getUbic() == 3 && bon.getUbic() != 4) { //bonnie
-                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/backstBonnie1.jpg"));
-                    setearCamara.setIcon(showstage_todos);
-                }
-                if (bon.getUbic() != 3 && bon.getUbic() == 4) { //bonnie
-                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/backstBonnie2.jpg"));
-                    setearCamara.setIcon(showstage_todos);
-                }
-
-            }
-
-            if (locationCamara.equals("kitchen")) { //chic 5            //6
-                //camara desabilitada
-                ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/static.gif"));
-                setearCamara.setIcon(showstage_todos);
-
-            }
-
-            if (locationCamara.equals("restrooms")) { //chic 3 4 / fred 2     //7
-
-                if (chic.getUbic() != 3 && chic.getUbic() != 4) { //VACIO
-                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/restroomVacio.jpg"));
-                    setearCamara.setIcon(showstage_todos);
-                }
-                if (chic.getUbic() == 3 && chic.getUbic() != 4) { //CHICA
-                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/restroomChica1.jpg"));
-                    setearCamara.setIcon(showstage_todos);
-                }
-                if (chic.getUbic() != 3 && chic.getUbic() == 4) { //CHICA CERCA
-                    ImageIcon showstage_todos = new ImageIcon(getClass().getResource("/Imagenes/restroomChica2.jpg"));
-                    setearCamara.setIcon(showstage_todos);
-                }
-
-            }
-
-            if (banderaLuzDer == 1 && chic.getUbic() == 9) {
-                ImageIcon btnluzVentanader = new ImageIcon(getClass().getResource("/Imagenes/venDerLuzChica2.png"));
-                ventanader.setIcon(btnluzVentanader);
-            }
-
-            if (banderaLuzIz == 1 && bon.getUbic() == 8) {
-                ImageIcon btnluzPuertader = new ImageIcon(getClass().getResource("/Imagenes/bonofiLuzEn.jpg"));
-                puertaLuzizq.setIcon(btnluzPuertader);
-            }
-
-            if (bon.getUbic() == 9 && banderaPuertaIz == 0 && banderaCamara == 0) {
-                HiloJumpscareB hJSBon = new HiloJumpscareB(jumpscareBonnie, this, vOficina, oficina);
-                hJSBon.start();
-                return;
-            }
-
-            if (chic.getUbic() == 10 && banderaPuertaDer == 0 && banderaCamara == 0) {
-                HiloJSChica hJSChic = new HiloJSChica(jumpscareChica, this, vOficina, oficina);
-                hJSChic.start();
-                return;
-            }
-
-            if (chic.getUbic() == 9 && banderaPuertaDer == 1) {
-                chic.setUbic(1);
-            }
-
-            if (bon.getUbic() == 8 && banderaPuertaIz == 1) {
-                bon.setUbic(1);
-            }
-
-            if (barraBat == 0) {
-                ImageIcon barraBateria = new ImageIcon(getClass().getResource("/Imagenes/0bat.jpeg"));
-                UsoBateria.setIcon(barraBateria);
-                UsoBateriaCam.setIcon(barraBateria);
-
-            } else if (barraBat == 1) {
-                ImageIcon barraBateria = new ImageIcon(getClass().getResource("/Imagenes/1bat.jpeg"));
-                UsoBateria.setIcon(barraBateria);
-                UsoBateriaCam.setIcon(barraBateria);
-
-            } else if (barraBat == 2) {
-                ImageIcon barraBateria = new ImageIcon(getClass().getResource("/Imagenes/2bat.jpeg"));
-                UsoBateria.setIcon(barraBateria);
-                UsoBateriaCam.setIcon(barraBateria);
-
-            } else if (barraBat == 3) {
-                ImageIcon barraBateria = new ImageIcon(getClass().getResource("/Imagenes/3bat.jpeg"));
-                UsoBateria.setIcon(barraBateria);
-                UsoBateriaCam.setIcon(barraBateria);
-
-            } else if (barraBat == 4) {
-                ImageIcon barraBateria = new ImageIcon(getClass().getResource("/Imagenes/4bat.jpeg"));
-                UsoBateria.setIcon(barraBateria);
-                UsoBateriaCam.setIcon(barraBateria);
-
-            } else if (barraBat == 5) {
-                ImageIcon barraBateria = new ImageIcon(getClass().getResource("/Imagenes/5bat.jpeg"));
-                UsoBateria.setIcon(barraBateria);
-                UsoBateriaCam.setIcon(barraBateria);
-
-            }
-
-            //NOCHE 2
-            contador++;
             if (!Ref.isAlive()) {
                 HiloGane hGane = new HiloGane(Win5a6, this, vOficina, oficina);
                 hGane.start();

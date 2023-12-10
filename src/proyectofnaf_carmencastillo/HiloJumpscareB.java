@@ -19,6 +19,8 @@ public class HiloJumpscareB extends Thread {
     private JFrame inicio;
     private JFrame oficina;
     private JPanel ofi;
+    private JPanel estaticc;
+    private JPanel deadc;
     private int contador = 0;
     private boolean isAlive = true;
     
@@ -26,11 +28,13 @@ public class HiloJumpscareB extends Thread {
 //        this.jsBon = camaragif;
 //    }
     
-    public HiloJumpscareB(JPanel jsBon, JFrame inicio, JFrame oficina, JPanel ofi) {
+    public HiloJumpscareB(JPanel jsBon, JFrame inicio, JFrame oficina, JPanel ofi, JPanel estaticc, JPanel deadc) {
         this.jsBon = jsBon;
         this.inicio = inicio;
         this.oficina =  oficina;
         this.ofi = ofi;
+        this.estaticc = estaticc;
+        this.deadc = deadc;
     }
     
     @Override
@@ -50,9 +54,11 @@ public class HiloJumpscareB extends Thread {
             }
         }
         jsBon.setVisible(false);
-        oficina.setVisible(false);
-        inicio.setVisible(true);
-        ofi.setVisible(true);
+        ofi.setVisible(false);
+        HiloEstatica estatica = new HiloEstatica(estaticc, inicio, oficina, ofi, deadc);
+        estatica.start();
+        //oficina.setVisible(false);
+        //inicio.setVisible(true);
         
     }
     
